@@ -37,7 +37,7 @@ bin/mysqld_safe --user=mysql &
 
 如果使用mysqld_safe方式登录，出现错误，往往是少了依赖。
 
-![image-20200610022158342](/home/silascript/资料/mysql/linux下安装mysql.assets/image-20200610022158342.png)
+![image-20200610022158342](./linux下安装mysql.assets/image-20200610022158342.png)
 
 那就装依赖包：
 
@@ -91,7 +91,7 @@ cp support-files/mysql.server /etc/init.d/mysql.server
 
 ###### suppor-files/mysql.server 会找/etc/下的my.cnf配置文件，如果/etc/下没有，将会到默认地址/usr/local/mysql/路径下找mysql_safe
 
-![image-20200610114905111](/home/silascript/资料/mysql/linux下安装mysql.assets/image-20200610114905111.png)
+![image-20200610114905111](./linux下安装mysql.assets/image-20200610114905111.png)
 
 
 
