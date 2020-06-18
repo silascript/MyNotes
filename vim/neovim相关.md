@@ -16,7 +16,7 @@
 
 插件管理工具vim-plug的核心文件**plug.vim**默认就是装在**site/autoload**中
 
-![image-20200618104543169](/home/silascript/资料/vim/neovim相关.assets/image-20200618104543169.png)
+![image-20200618104543169](./neovim相关.assets/image-20200618104543169.png)
 
 
 
@@ -91,7 +91,7 @@ let g:airline_theme='dark'
 #### 3. **文件类型图标**
 [https://github.com/ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
 
-![image-20200618134854822](/home/silascript/资料/vim/neovim相关.assets/image-20200618134854822.png)
+![image-20200618134854822](./neovim相关.assets/image-20200618134854822.png)
 
 #### 4. **成对标点符号**
 
