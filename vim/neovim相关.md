@@ -224,5 +224,44 @@ set undodir=~/.local/share/nvim/.undodir
 
 
 
+#### 10. **vim-gitgutter**
 
+[vim-gitgutter](https://github.com/airblade/vim-gitgutter)
+
+###### 基础配置
+
+```vim
+" -----------------------
+"       GitGutter设置
+" -----------------------
+" 开启gitgutter
+let g:gitgutter_enabled = 1
+
+
+```
+
+
+
+###### vim-gigutter各种常用命令:
+
+​	**:GitGutterToggle**		开启关闭gutter
+
+​	**:GitGutterLineHighlightsToggle** 	开启关闭高亮相关行
+
+​	
+
+#### 11. vim-fugitive
+
+[https://github.com/tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
+
+**常用命令:**
+
+```vim
+:Git commit
+:Git push
+```
+
+**:Git** 后加git的常用命令，跟在终端下使用git相同，push提交时会切出终端输入远程仓库的用户名和密码。
+
+如果在neovim中使用**:Git push**不能弹出输入用户名和密码，就使用**:terminal git push**
 

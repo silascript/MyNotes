@@ -65,10 +65,6 @@ plush privileges;
 
 
 
-
-
-
-
 ###### 以下的修改密码不能在临时密码状态下使用，只能在上面修改后重新登录后才能使用
 
 ```mysql
@@ -126,11 +122,6 @@ pid-file=/usr/local/mysql-5.7/data/mysql.pid
 
 ```
 
-
-
-
-
-```
 
 
 
