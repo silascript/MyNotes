@@ -210,15 +210,16 @@ S  ： 选中内容添加包围并独成一行
 
 [https://github.com/mbbill/undotree](https://github.com/mbbill/undotree)
 
-```vim
+````vim
+
 " -----------------------------
-136 "       UndoTree设置
-137 " -----------------------------
-138 "映射快捷键
-139 nnoremap <leader>udt :UndotreeToggle <CR>
-140 " 设置undo文件的存放目录(得事先mkdir)
-141 set undofile
-142 set undodir=~/.local/share/nvim/.undodir
+"       UndoTree设置
+" -----------------------------
+"映射快捷键
+nnoremap <leader>udt :UndotreeToggle <CR>
+" 设置undo文件的存放目录(得事先mkdir)
+set undofile
+set undodir=~/.local/share/nvim/.undodir
 ```
 
 
