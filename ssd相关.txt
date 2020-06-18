@@ -1,0 +1,21 @@
+
+apt-get install smartmontools
+smartctl -a /dev/sda|grep Wear
+
+看写入量等数据：
+sudo smartctl -l devstat /dev/sda
+
+
+查看当前系统支持的IO调度算法
+dmesg | grep -i scheduler
+
+查看当前系统的I/O调度算法
+cat /sys/block/sdb/queue/scheduler
+
+检查fstrim定时任务
+sudo systemctl status fstrim.timer
+
+列出所有定时任务
+sudo systemctl list-timers --all
+
+
