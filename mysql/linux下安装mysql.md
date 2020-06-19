@@ -124,13 +124,6 @@ pid-file=/usr/local/mysql-5.7/data/mysql.pid
 
 
 
-
-
-
-```
-
-
-
 #### 各配置文件路径及优先级
 
 |      File Name      |                    Purpose                    |
@@ -150,14 +143,11 @@ pid-file=/usr/local/mysql-5.7/data/mysql.pid
 
 
 
-
-
-
 #### Misc
 
 
-
 ```shell
+
 ----启动MySQL
 mysqld --defaults-file=/etc/my.cnf &
 mysqld_safe --defaults-file=/etc/my.cnf --user=mysql &
@@ -176,9 +166,7 @@ killall mysqld
 killall -9 mysqld
 ```
 
-
-
-如果原来使用mysqld_safe启动，可以使用killall mysqld关闭
+如果原来使用mysqld_safe启动，可以使用**killall mysqld**关闭
 
 
 

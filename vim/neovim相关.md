@@ -265,3 +265,16 @@ let g:gitgutter_enabled = 1
 
 如果在neovim中使用**:Git push**不能弹出输入用户名和密码，就使用**:terminal git push**
 
+
+
+#### 12. LoremIpsum
+
+[https://github.com/vim-scripts/loremipsum](https://github.com/vim-scripts/loremipsum)
+
+常用命令:
+
+```vim
+:Loremipsum  " 生成默认文本
+:Loremipsum 数字 " 生成指定字符数目的文本
+```
+
