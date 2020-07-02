@@ -535,3 +535,22 @@ noremap 要映射的键 映射键
 
 
 
+
+
+### try...catch
+
+```vim
+
+try
+	语句
+catch
+	语句
+endtry
+
+
+```
+
+
+
+
+
