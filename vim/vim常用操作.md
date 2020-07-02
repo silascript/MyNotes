@@ -509,11 +509,29 @@ vim -p 文档1 文档2 ....
 ### 快捷键映射
 
 
+| 命令 | Normal Mode | Visual Mode | Insert Mode |
+| :--: | :---------: | :---------: | :---------: |
+| map  |      *      |      *      |             |
+| nmap |      *      |             |             |
+| vmap |             |      *      |             |
+| imap |             |             |      *      |
 
-- [ ] - [ ] | 命令 | Normal Mode | Visual Mode | Insert Mode |
-    | :--: | :---------: | :---------: | :---------: |
-    | map  |      *      |      *      |             |
-    | nmap |      *      |             |             |
-    | vmap |             |      *      |             |
-    | imap |             |             |      *      |
+
+
+
+
+​	禁用某些键示例:
+
+```		vim
+map 要禁的键 <Nop>
+```
+
+​	禁用递归映射:
+
+```vim
+noremap 要映射的键 映射键
+" 其他模式可用inoremap、nnoremap和vnoremap
+```
+
+
 
