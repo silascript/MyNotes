@@ -154,13 +154,13 @@ mysqld_safe --defaults-file=/etc/my.cnf --user=mysql &
 service mysql start
 /etc/init.d/mysql start
 mysqld_multi start #多实例
-net start mysql #Windows
+
 ----关闭MySQL
 mysqladmin -uroot -plhr -S /tmp/mysql3306.sock shutdown
 service mysql stop
 /etc/init.d/mysql stop
 mysqld_multi stop #多实例
-net stop mysql #Windows
+
 --杀死mysql
 killall mysqld
 killall -9 mysqld
