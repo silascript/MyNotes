@@ -22,6 +22,48 @@ chmod 750 mysql-files
 ./bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql-5.7/ --datadir=/usr/local/mysql-5.7/data/ --pid-file=/usr/local/mysql-5.7/data/mysql.pid
 ```
 
+#### --datadir选项是必需的，并且数据目录必须不存在。
+
+**--user** **--basedir** **--datadir** **--pid-file** 本来这几个选项是**mysql_install_db**的。
+
+#### 从 MySQL 5.7.6 开始不推荐使用**mysql_install_db**，因为它的功能已集成到 MySQL 服务器**mysqld**中。要初始化 MySQL 安装，请使用**--initialize**或**--initialize-insecure**选项调用**mysqld**。
+
+
+
+#### **mysqld**的选项:
+
+```shell
+
+--initialize        	Create the default database and exit. Create a super user 
+						with a random expired password and store it into the log.
+						
+--initialize-insecure 	Create the default database and exit. Create a super user with empty password.
+                    
+-u, --user=name     	Run mysqld daemon as user.
+    
+-b, --basedir=name  	Path to installation directory. All paths are usually resolved relative to this
+  
+-h, --datadir=name  	Path to the database root directory
+  
+--pid-file=name     	Pid file used by safe_mysqld
+
+
+```
+
+使用**mysqld --verbose --help** 查询**mysqld**的选项和参数，发现原来**mysql_install_db**中的选项，在**mysqld**中都存在了，这也印证了"**mysql_install_db**将在将来的 MySQL 版本中删除"的说法。
+
+
+
+默认情况,执行**mysqld** 可能缺少**libnuma**库,安装**numactl**就可以解决这个问题：
+
+```shell
+sudo pacman -S numactl
+```
+
+
+
+
+
 ###### 开启ssl
 
 ```shell
@@ -44,6 +86,14 @@ bin/mysqld_safe --user=mysql &
 ```shell
 sudo apt install libncurses5
 ```
+
+#### 缺少libncurses.so.5，在arch里是ncurses5-compat-libs，同样进行安装：
+
+```shell
+sudo pacman -S ncurses5-compat-libs　
+```
+
+#### 
 
 
 
@@ -121,6 +171,10 @@ pid-file=/usr/local/mysql-5.7/data/mysql.pid
 
 
 ```
+
+#### **mysql_install_db**不创建默认的`my.cnf`文件
+
+#### 从 MySQL 5.7.18 开始，`my-default.cnf`不再包含在分发包中或由分发包安装
 
 
 
