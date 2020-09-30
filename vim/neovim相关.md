@@ -30,6 +30,51 @@
 set termguicolors
 
 
+set nocompatible
+set number
+" 退格键设置
+set backspace=indent,start
+
+
+" 关闭各种自动生成文件
+set noundofile
+set nobackup
+set noswapfile
+
+
+" 高亮搜索
+set hlsearch
+set incsearch
+
+" 显示状态栏
+set laststatu=2
+set ruler
+
+" 与底部保持固定间距
+set scrolloff=5
+
+" 缩进
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+" 不要将tab展开成空格
+set noexpandtab
+
+" 字符编码
+set encoding=utf-8
+set langmenu=zh_CN.UTF-8
+set fileencodings=utf-8,gbk,gb18030,gb2312,ucs-bom,cp936,big5,euc-jp,euc-kr
+
+" 语法高亮及文件类型
+syntax on
+filetype on
+filetype plugin on
+
+" 命令行提示
+set wildmenu
+
+
+
 ```
 
 
