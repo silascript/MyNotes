@@ -14,8 +14,13 @@ ln -s full-path-to-mysql-VERSION-OS mysql
 cd mysql
 mkdir data
 chown mysql:mysql data
+
 #### 为数据目录分配权限
 chmod 750 mysql-files
+
+> (**data**、**mysql-files**目录的用户必须是mysql)
+
+
 
 ### 初始化：
 ``` mysqld
@@ -26,7 +31,11 @@ chmod 750 mysql-files
 
 **--user** **--basedir** **--datadir** **--pid-file** 本来这几个选项是**mysql_install_db**的。
 
-#### 从 MySQL 5.7.6 开始不推荐使用**mysql_install_db**，因为它的功能已集成到 MySQL 服务器**mysqld**中。要初始化 MySQL 安装，请使用**--initialize**或**--initialize-insecure**选项调用**mysqld**。
+
+
+> 从 MySQL 5.7.6 开始不推荐使用**mysql_install_db**，因为它的功能已集成到 MySQL 服务器**mysqld**中。要初始化 MySQL 安装，请使用**--initialize**或**--initialize-insecure**选项调用**mysqld**。
+
+
 
 
 
@@ -93,11 +102,7 @@ sudo apt install libncurses5
 sudo pacman -S ncurses5-compat-libs　
 ```
 
-#### 
-
-
-
-### 使用初始化生成的临时密码使用root登录
+> 使用初始化生成的临时密码使用root登录
 
 
 
@@ -172,9 +177,11 @@ pid-file=/usr/local/mysql-5.7/data/mysql.pid
 
 ```
 
-#### **mysql_install_db**不创建默认的`my.cnf`文件
+> **mysql_install_db**不创建默认的`my.cnf`文件
+>
+> 从 MySQL 5.7.18 开始，`my-default.cnf`不再包含在分发包中或由分发包安装
 
-#### 从 MySQL 5.7.18 开始，`my-default.cnf`不再包含在分发包中或由分发包安装
+
 
 
 
@@ -221,6 +228,17 @@ killall -9 mysqld
 ```
 
 如果原来使用mysqld_safe启动，可以使用**killall mysqld**关闭
+
+> Unix 和类似 Unix 的系统上的 MySQL 发行版包含一个名为**mysql.server**的脚本，该脚本使用**mysqld_safe**启动 MySQL 服务器。它可以在使用 System V 样式的运行目录来启动和停止系统服务的系统(例如 Linux 和 Solaris)上使用。
+>
+> **mysql.server**是在 MySQL 源代码树中使用的脚本名称。安装的名称可能不同(例如**mysqld**或**mysql**)。
+
+使用**mysql.server**启动和停止mysql
+
+```shell
+mysql.server start
+mysql.server stop
+```
 
 
 
