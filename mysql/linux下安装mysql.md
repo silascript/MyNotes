@@ -2,32 +2,41 @@
 
 
 ### 创建用户组及用户
+```shell
 groupadd mysql
 useradd -r -g mysql -s /bin/false mysql
+```
+
+
 
 ### 将压缩包解压到要安装的目录
+```shell
 cd /usr/local
 tar zxvf /path/to/mysql-VERSION-OS.tar.gz
 ln -s full-path-to-mysql-VERSION-OS mysql
+```
 
-### 在安装目录中新建数据目录,目录名为data
-cd mysql
-mkdir data
-chown mysql:mysql data
 
-#### 为数据目录分配权限
+
+#### 在mysql安装目录下新建mysql-files目录并分配权限
+
+```shell
+mkdir mysql-files
 chmod 750 mysql-files
+```
 
-> (**data**、**mysql-files**目录的用户必须是mysql)
+> **data**目录不能提前建，它是由**mysqld** 初始化时通过**--datadir**来指定生成的
 
 
 
 ### 初始化：
-``` mysqld
+``` shell
 ./bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql-5.7/ --datadir=/usr/local/mysql-5.7/data/ --pid-file=/usr/local/mysql-5.7/data/mysql.pid
 ```
 
-#### --datadir选项是必需的，并且数据目录必须不存在。
+> **--datadir**选项是必需的，并且数据目录必须不存在。
+>
+> 用**--initialize**会给root生成一个默认密码，**--initialize-insecure**不生成密码
 
 **--user** **--basedir** **--datadir** **--pid-file** 本来这几个选项是**mysql_install_db**的。
 
@@ -71,7 +80,13 @@ sudo pacman -S numactl
 
 
 
+>**data**、**mysql-files**目录的用户必须是**mysql**
+>
+>所以在将**mysql安装目录**改回root或其他用户后，单独再次修改**data**和**mysql-files**目录的用户为**mysql**
 
+```shell
+chown mysql data mysql-files
+```
 
 ###### 开启ssl
 
@@ -81,7 +96,12 @@ bin/mysql_ssl_rsa_setup --datadir=/usr/local/mysql-5.7/data
 
 
 
-#### mysqld_safe最好也初始化           
+### 启动：
+
+
+
+ #### 启动方式1: mysqld_safe         
+
 ```shell
 bin/mysqld_safe --user=mysql &
 ```
@@ -96,7 +116,7 @@ bin/mysqld_safe --user=mysql &
 sudo apt install libncurses5
 ```
 
-#### 缺少libncurses.so.5，在arch里是ncurses5-compat-libs，同样进行安装：
+> 缺少libncurses.so.5，在arch里是ncurses5-compat-libs，同样进行安装：
 
 ```shell
 sudo pacman -S ncurses5-compat-libs　
@@ -132,13 +152,11 @@ grant all privileges on *.* to 'energy_pf'@'192.168.2.65' identified by 'energy_
 
 
 
-### 添加启动服务
+#### 启动方式2: 添加启动服务
 
 ```shell
 cp support-files/mysql.server /etc/init.d/mysql.server
 ```
-
-
 
 ###### suppor-files/mysql.server 会找/etc/下的my.cnf配置文件，如果/etc/下没有，将会到默认地址/usr/local/mysql/路径下找mysql_safe
 
@@ -146,19 +164,15 @@ cp support-files/mysql.server /etc/init.d/mysql.server
 
 
 
-**添加服务后重启，不然容易出现找不到服务**
+> **添加服务后重启，不然容易出现找不到服务**
+>
+> 如果报PID文件找不到就得重新初始化mysql了~
 
 
 
-如果报PID文件找不到就得重新初始化mysql了~
+#### my.cnf配置
 
-
-
-
-
-
-### my.cnf配置
-```ini
+```cnf
 [mysqld]
 basedir=/usr/local/mysql-5.7
 datadir=/usr/local/mysql-5.7/data
@@ -197,9 +211,11 @@ pid-file=/usr/local/mysql-5.7/data/mysql.pid
 |      ~/.my.cnf      |             User-specific options             |
 |   ~/.mylogin.cnf    | User-specific login path options(client only) |
 
-###### MySQL实例启动需要依赖my.cnf配置文件，而配置文件可以存在于多个操作系统目录下。
+> MySQL实例启动需要依赖**my.cnf**配置文件，而配置文件可以存在于多个操作系统目录下。
+>
+> **my.cnf**的默认查找路径，从上往下找到的文件先读，但优先级逐级提升。
 
-###### my.cnf的默认查找路径，从上往下找到的文件先读，但优先级逐级提升。
+###### 
 
 
 
