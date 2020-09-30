@@ -126,33 +126,34 @@ sudo pacman -S ncurses5-compat-libs　
 
 
 
-### 修改密码及权限
 
-```mysql
-alter user 'root'@'localhost' identified by 'youpassword'; 
+
+
+
+#### 启动方式2: 使用mysql.server来启动
+
+```shell
+support-files/mysql.server start
 ```
 
-###### 记得刷新下
-
-```mysql
-plush privileges;
-```
-
-
-
-###### 以下的修改密码不能在临时密码状态下使用，只能在上面修改后重新登录后才能使用
-
-```mysql
-grant all privileges on *.* to 'energy_pf'@'192.168.2.65' identified by 'energy_pf' with grant option;
-```
-
-
-
-**每次对用户权限修改、增加都得plush下**
+>```shell
+>如果启动出现以下错误:
+>error while loading shared libraries: libncurses.so.5: cannot open shared object file: No such file or directory
+>```
+>
+>明显就是缺少相应的库了。
+>
+>缺少**libncurses.so.5**，在arch里是**ncurses5-compat-libs**，同样进行安装：
+>
+>```shell
+>sudo pacman -S ncurses5-compat-libs
+>```
 
 
 
-#### 启动方式2: 添加启动服务
+
+
+###### 为了方便将mysql.server添加为启动服务
 
 ```shell
 cp support-files/mysql.server /etc/init.d/mysql.server
@@ -216,6 +217,57 @@ pid-file=/usr/local/mysql-5.7/data/mysql.pid
 > **my.cnf**的默认查找路径，从上往下找到的文件先读，但优先级逐级提升。
 
 ###### 
+
+
+
+
+
+### 修改密码及权限
+
+>使用初始化给的root帐号及随机密码登录mysql成功后，要修改密码
+
+```mysql
+alter user 'root'@'localhost' identified by 'youpassword'; 
+```
+
+###### 记得刷新下
+
+```mysql
+plush privileges;
+```
+
+
+
+###### 以下的修改密码不能在临时密码状态下使用，只能在上面修改后重新登录后才能使用
+
+```mysql
+grant all privileges on *.* to 'energy_pf'@'192.168.2.65' identified by 'energy_pf' with grant option;
+```
+
+> **每次对用户权限修改、增加都得flush下**
+
+
+
+##### 查看user表
+
+>user表是放在mysql数据库中
+>
+>所以先选择库再查询表
+>
+>```shell
+>use mysql;
+>
+>select user,host,authentication_string from user;
+>
+>```
+>
+>mysql5.7的user的密码是加密后放在**authentication_string**这个字段中。
+>
+>
+
+
+
+
 
 
 
