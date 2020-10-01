@@ -153,7 +153,7 @@ support-files/mysql.server start
 
 
 
-###### 为了方便将mysql.server添加为启动服务
+###### 为了方便将mysql.server添加为启动服务(旧)
 
 ```shell
 cp support-files/mysql.server /etc/init.d/mysql.server
@@ -168,6 +168,30 @@ cp support-files/mysql.server /etc/init.d/mysql.server
 > **添加服务后重启，不然容易出现找不到服务**
 >
 > 如果报PID文件找不到就得重新初始化mysql了~
+
+
+
+
+
+###### manjaro下不使用以上方式添加启动服务
+
+>可以为**mysql.server**添加有个软链接
+>
+>```shell
+>sudo ln -s /usr/local/mysql-5.7/support-files/mysql.server /usr/local/bin/mysql_server-5.7
+>```
+>
+>这样就直接调软链接就能启动和关闭mysql服务
+>
+>```shell
+>sudo mysql_server-5.7 start
+>```
+>
+>```shell
+>sudo mysql_server-5.7 stop
+>```
+
+
 
 
 
@@ -215,8 +239,6 @@ pid-file=/usr/local/mysql-5.7/data/mysql.pid
 > MySQL实例启动需要依赖**my.cnf**配置文件，而配置文件可以存在于多个操作系统目录下。
 >
 > **my.cnf**的默认查找路径，从上往下找到的文件先读，但优先级逐级提升。
-
-###### 
 
 
 
