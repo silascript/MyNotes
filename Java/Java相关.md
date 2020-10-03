@@ -55,3 +55,24 @@ sudo ./bin/jlink --module-path jmods --add-modules java.desktop --output jre
 >```shell
 >chmod -R 777 apache-tomcat-xxx/lib
 >```
+
+
+
+#### 启动Tomcat后404
+
+>![](Java相关.assets/eclipse_tomcat_publish.png)
+>
+>要选第二项，就是将项目复制一份到tomcat安装目录下的wtpwebapps目录中进行发布
+
+
+
+
+
+
+
+
+
+
+
+
+
