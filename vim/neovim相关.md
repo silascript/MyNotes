@@ -6,11 +6,13 @@
 
 当前用户配置文件init.vim放在
 
-**~/.config/nvim/**这个目录下
+**~/.config/nvim/**这个目录下(如果是windows,则是 **C:\Users\用户名\AppData\Local\nvim\目录下**)
 
 而当前用户neovim的数据目录路径为:
 
 **~/.local/share/nvim**
+
+>windows下neovim的数据目录路径为**./AppData/Local/nvim-data/**
 
 而color、autoload等目录是放在**~/.local/share/nvim/site**
 
