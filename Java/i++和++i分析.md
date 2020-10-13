@@ -29,7 +29,7 @@ public class InCreament_1{
 
 运行结果:
 
-![image-20191102214024405](D:\MyNotes\Java\i++和++i分析.assets\image-20191102214024405.png)
+![image-20191102214024405](./i++和++i分析.assets/image-20191102214024405.png)
 
 ​	使用javap分析:
 
@@ -104,7 +104,7 @@ public class InCreament_2{
 
 运行结果:
 
-![image-20191102213934082](D:\MyNotes\Java\i++和++i分析.assets\image-20191102213934082.png)
+![image-20191102213934082](./i++和++i分析.assets/image-20191102213934082.png)
 
 
 
@@ -214,7 +214,7 @@ public class InCreament_1_1{
 
 运行结果:
 
-![image-20191102213443042](D:\MyNotes\Java\i++和++i分析.assets\image-20191102213443042.png)
+![image-20191102213443042](./i++和++i分析.assets/image-20191102213443042.png)
 
 
 
@@ -320,7 +320,7 @@ public class InCreament_3{
 
 运行结果:
 
-![image-20191103082103712](D:\MyNotes\Java\i++和++i分析.assets\image-20191103082103712.png)
+![image-20191103082103712](./i++和++i分析.assets/image-20191103082103712.png)
 
 跟例子1结果完全一样。
 
@@ -428,7 +428,7 @@ public class InCreament_3_1{
 
 运行结果:
 
-![image-20191103084315564](D:\MyNotes\Java\i++和++i分析.assets\image-20191103084315564.png)
+![image-20191103084315564](./i++和++i分析.assets/image-20191103084315564.png)
 
 与例子2结果完全一样
 
@@ -525,4 +525,4 @@ j=++j;对应指令如下:
 
 运行结果:
 
-![image-20191104030012270](D:\MyNotes\Java\i++和++i分析.assets\image-20191104030012270.png)
+![image-20191104030012270](./i++和++i分析.assets/image-20191104030012270.png)
