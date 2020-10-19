@@ -58,7 +58,19 @@ set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,shift-jis,latin1
 
 ```
 
+#### 特别设置
 
+```vimscript
+" 开启透明背景                                                                                                    
+func! s:transparent_background()
+    hi Normal guibg=NONE ctermbg=NONE
+    hi NonText guibg=NONE ctermbg=NONE
+endf
+autocmd ColorScheme * call s:transparent_background()
+
+```
+
+>**注意:透明背景设置必须放在colortheme设置之后!**
 
 
 
