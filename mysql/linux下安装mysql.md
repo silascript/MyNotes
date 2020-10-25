@@ -255,7 +255,7 @@ alter user 'root'@'localhost' identified by 'youpassword';
 ###### 记得刷新下
 
 ```mysql
-plush privileges;
+flush privileges;
 ```
 
 
