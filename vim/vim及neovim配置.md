@@ -89,7 +89,15 @@ endif
 set pythonthreedll=I:/Scoop/apps/python-beta/current/python38.dll
 ```
 
+>neovim不使用**set pythonthreedll**
+>
+>（neovim使用**:checkhealth**检测python支持）
+>
+>neovim使用**pip**安装**pyvim**模块
 
+```shell
+pip3 install --user --upgrade pynvim
+```
 
 
 
