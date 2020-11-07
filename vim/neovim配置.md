@@ -74,6 +74,21 @@ autocmd ColorScheme * call s:transparent_background()
 
 
 
+##### python相关
+
+>如果python不起作用就使用**set pythonthreedll**来指定python的dll
+
+```shell
+if has('python3')
+	set pyx=3
+elseif has('python')
+	set pyx=3
+endif
+
+" 配置python相关dll路径
+set pythonthreedll=I:/Scoop/apps/python-beta/current/python38.dll
+```
+
 
 
 
@@ -113,6 +128,18 @@ airline的配置
 
 
 
+
+#### snippets插件
+
+```shell
+" snippet相关
+" snippet调用引擎
+Plug 'SirVer/ultisnips'
+" snippet仓库
+Plug 'honza/vim-snippets'
+```
+
+>ultisnips这个插件依赖python
 
 
 
