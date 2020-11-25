@@ -13,3 +13,6 @@ VictorMono Nerd Font Mono Medium
 
 Hack Nerd Font Mono Regular
 DejaVu Sans Code Book
+Meslo LG S Regular
+
+
