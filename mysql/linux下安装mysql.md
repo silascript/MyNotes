@@ -285,7 +285,9 @@ grant all privileges on *.* to 'energy_pf'@'192.168.2.65' identified by 'energy_
 >
 >mysql5.7的user的密码是加密后放在**authentication_string**这个字段中。
 >
->
+>![image-20201130080857639](linux下安装mysql.assets/image-20201130080857639.png)
+
+
 
 
 
