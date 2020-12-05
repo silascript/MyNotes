@@ -37,7 +37,7 @@
 
 [Linux下PHP安装](PHP/Linux下PHP安装.md)
 
-[Linux 下安装配置Apache](PHP/Linux 下安装配置Apache.md)
+[Linux 下安装配置Apache](PHP/Linux下安装配置Apache.md)
 
 
 
