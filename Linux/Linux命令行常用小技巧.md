@@ -67,3 +67,20 @@ cd -
 ​		**Shift-insert**
 
 ​	
+
+
+
+
+
+## 奇怪问题
+
+>装gnome shell extension插件后，会用到"Alt+F2 输入r 重启"这个操作,如下图:
+>
+>![](Linux命令行常用小技巧.assets/2020-12-09 09-38-04 的屏幕截图.png)
+>
+>如果提示**"Wayland下重启不可用"**，可以做以下设置：
+>
+>1. 修改/etc/gdm/custom.conf中**WaylandEnable=false**，可能你做某些设置会让这行代码被注释掉，这才会出现上述问题，所以将此行代码注释去除
+>2. 重启系统，应该就正常了
+>
+>

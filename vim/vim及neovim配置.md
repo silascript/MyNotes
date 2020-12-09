@@ -147,7 +147,18 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 ```
 
->ultisnips这个插件依赖python
+>ultisnips这个插件依赖python,而且是特定版本，特别恶心,所以慎用！
+
+使用另一个snippet引擎：**SnipMate**
+
+**snipmate**这个插件需要依赖其他两个插件，所需插件如下配置:
+
+```shell
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+
+```
 
 
 
