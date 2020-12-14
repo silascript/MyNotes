@@ -100,7 +100,7 @@ git clone 地址 [本地版本库名称]
 git status
 ```
 
-![](Git 笔记.assets/2020-12-06 10-24-40屏幕截图.png)
+![](Git笔记.assets/2020-12-06 10-24-40屏幕截图.png)
 
 
 
@@ -110,7 +110,7 @@ git status
 git log
 ```
 
-![](Git 笔记.assets/2020-12-06 10-26-02屏幕截图.png)
+![](Git笔记.assets/2020-12-06 10-26-02屏幕截图.png)
 
 
 
@@ -120,7 +120,7 @@ git log
 git branch
 ```
 
-![](Git 笔记.assets/2020-12-06 10-26-57屏幕截图.png)
+![](Git笔记.assets/2020-12-06 10-26-57屏幕截图.png)
 
 
 
@@ -130,7 +130,7 @@ git branch
 git ls-files -s
 ```
 
-![](Git 笔记.assets/2020-12-06 10-28-33屏幕截图.png)
+![](Git笔记.assets/2020-12-06 10-28-33屏幕截图.png)
 
 
 
@@ -140,7 +140,7 @@ git ls-files -s
 git remote show 远程版本库名称
 ```
 
-![](Git 笔记.assets/2020-12-06 10-54-53屏幕截图.png)
+![](Git笔记.assets/2020-12-06 10-54-53屏幕截图.png)
 
 
 
@@ -165,7 +165,7 @@ git remote show 远程版本库名称
 
 * **index**文件:		保存暂存区信息
 
-![](Git 笔记.assets/2020-12-02 22-37-58屏幕截图.png)
+![](Git笔记.assets/2020-12-02 22-37-58屏幕截图.png)
 
 
 
@@ -191,21 +191,21 @@ echo "hello world" | git hash-object --stdin
 
 结果:
 
-![](Git 笔记.assets/2020-12-02 22-39-37屏幕截图.png)
+![](Git笔记.assets/2020-12-02 22-39-37屏幕截图.png)
 
 如果没有使用**-w** 选项，则在**objects**目录中不会生成相应的子目录.如下图:
 
-![](Git 笔记.assets/2020-12-02 23-58-00屏幕截图.png)
+![](Git笔记.assets/2020-12-02 23-58-00屏幕截图.png)
 
 而使用**-w** 选项后，则会在**objects**目录中生成相应的子目录及文件，其目录名为hash值最高**2**位，剩下**38**位为文件名，如下图:
 
-![](Git 笔记.assets/2020-12-03 00-01-30屏幕截图.png)
+![](Git笔记.assets/2020-12-03 00-01-30屏幕截图.png)
 
 
 
 又如：
 
-![](Git 笔记.assets/2020-12-06 02-11-45屏幕截图.png)
+![](Git笔记.assets/2020-12-06 02-11-45屏幕截图.png)
 
 
 
@@ -235,7 +235,7 @@ git cat-file -p 3b18e512dba79e4c8300dd08aeb37f8e728b8dad
 
 结果:
 
-![](Git 笔记.assets/2020-12-03 00-04-47屏幕截图.png)	
+![](Git笔记.assets/2020-12-03 00-04-47屏幕截图.png)	
 
 
 
@@ -247,7 +247,7 @@ git cat-file -p 3b18e512dba79e4c8300dd08aeb37f8e728b8dad
 
 
 
-![](Git 笔记.assets/2020-12-06 02-14-33屏幕截图.png)
+![](Git笔记.assets/2020-12-06 02-14-33屏幕截图.png)
 
 
 
