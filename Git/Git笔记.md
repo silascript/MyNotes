@@ -249,3 +249,77 @@ git cat-file -p 3b18e512dba79e4c8300dd08aeb37f8e728b8dad
 
 ![](Git 笔记.assets/2020-12-06 02-14-33屏幕截图.png)
 
+
+
+
+
+
+
+
+
+
+
+## GitHub使用
+
+github访问慢可以使用重设host映射解决。
+
+步骤:
+
+1. 检测可用的ip
+
+   >有两个常用网站可以检测
+   >
+   >- http://ping.chinaz.com
+   >
+   >  ![](Git笔记.assets/2020-12-15 01-10-40屏幕截图.png)
+   >
+   >- https://www.ipaddress.com
+   >
+   >  ![](Git笔记.assets/2020-12-15 01-13-12屏幕截图.png)
+
+检测出的ip，最好自己**ping**一下，选速度比较快的几个。
+
+
+
+2. 设置host文件
+
+>在linux下host文件路径是/etc/hosts
+>
+>**修改host文件**，需要root权限
+>
+>host映射格式: **"ip 地址"**
+>
+>例子：
+>
+>```ini
+>140.82.113.4 github.com
+>```
+>
+>
+
+
+
+
+
+需要重新设置host的地址:
+
+>* github.com
+>* gist.github.com
+>* github.githubassets.com
+>* raw.githubusercontent.com
+>* camo.githubusercontent.com
+>
+>* avatars0.githubusercontent.com
+>* avatars1.githubusercontent.com
+>* avatars2.githubusercontent.com
+>* avatars3.githubusercontent.com
+>* user-images.githubusercontent.com
+>* github-cloud.s3.amazonaws.com
+>* 
+
+***.githubusercontent.com** 这几个地址跟图片相关,如果github能访问但图片加载慢或加载不出来，就得配这几个地址了！
+
+
+
+
+
