@@ -315,7 +315,7 @@ github访问慢可以使用重设host映射解决。
 >* avatars3.githubusercontent.com
 >* user-images.githubusercontent.com
 >* github-cloud.s3.amazonaws.com
->* 
+>* assets-cdn.github.com
 
 ***.githubusercontent.com** 这几个地址跟图片相关,如果github能访问但图片加载慢或加载不出来，就得配这几个地址了！
 
