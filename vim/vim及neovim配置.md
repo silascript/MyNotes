@@ -1,4 +1,6 @@
-# neovim配置
+
+
+## neovim配置
 
 #### sysinit.vim 配置文件
 
