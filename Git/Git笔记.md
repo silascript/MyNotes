@@ -323,3 +323,29 @@ github访问慢可以使用重设host映射解决。
 
 
 
+3. 使用国内镜像替换
+
+   换ip有时只有解决访问github网站问题，而clone操作仍会卡住，那么这就使用国内github的镜像网站来替换了。
+
+   命令如下：
+
+```shell
+git config --global url."https://github.com.cnpmjs.org/".insteadOf https://github.com/
+```
+
+​	取消设置:
+
+```shell
+git config --global --unset url.https://github.com/.insteadof
+```
+
+
+
+
+
+国内镜像：
+
+* [github.com.cnpmjs.org](https://github.com.cnpmjs.org/)
+
+* [gitclone.com](https://gitclone.com)
+*  [doc.fastgit.org](https://doc.fastgit.org)
