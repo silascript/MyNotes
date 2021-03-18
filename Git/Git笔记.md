@@ -333,6 +333,8 @@ github访问慢可以使用重设host映射解决。
 git config --global url."https://github.com.cnpmjs.org/".insteadOf https://github.com/
 ```
 
+​	注意：地址一定不能省略最后的**"/"**	
+
 ​	取消设置:
 
 ```shell
@@ -346,6 +348,6 @@ git config --global --unset url.https://github.com/.insteadof
 国内镜像：
 
 * [github.com.cnpmjs.org](https://github.com.cnpmjs.org/)
-
+* [hub.fastgit.org](https://hub.fastgit.org)
 * [gitclone.com](https://gitclone.com)
 *  [doc.fastgit.org](https://doc.fastgit.org)
