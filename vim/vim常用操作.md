@@ -232,6 +232,21 @@
 
 ### 折叠
 
+激活折叠功能:
+
+```shell
+:set foldenable 
+:set foldmethod = indent
+```
+
+停用折叠功能:
+
+```shell
+:set nofoldenable
+```
+
+
+
 ​	**zf**:		将选中的代码块折叠
 
 ​	**zd**:		展开并删除折叠
