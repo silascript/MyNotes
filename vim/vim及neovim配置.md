@@ -164,6 +164,18 @@ Plug 'garbas/vim-snipmate'
 
 
 
+自定义snippets文件
+
+在~/.vim/目录新建一个目录**snippets**目录，用来存在自定义的snippets文件。
+
+因为此目录位于所有插件之外，所以你自定义的snippets文件不会因为插件更新而被删除。
+
+在snippets目录中建立你自定义的snippets文件，文件后缀名为**snippets**。
+
+例如，xml的snippets，就新建**xml.snippets**文件。
+
+snippets语法格式请参考[vim-snippets](https://github.com/honza/vim-snippets)
+
 
 
 
