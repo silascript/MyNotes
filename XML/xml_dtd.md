@@ -2,9 +2,61 @@
 
 ## 引入方式
 
-1. 内部DTD
-2. 外部DTD
-3. 公用DTD
+1. <a href="#dtd_ref_in">内部DTD</a>
+2. <a href="#dtd_ref_ext">外部DTD</a>
+3. <a href="#dtd_ref_pub">公用DTD</a>
+
+
+
+### <a id="dtd_ref_in">内部DTD</a>
+
+基础语法:
+
+```xml-dtd
+<!DOCTYPE 根元素名[
+        元素描述
+    ]>
+```
+
+
+
+### <a id="dtd_ref_ext">外部DTD</a>
+
+基础语法:
+
+```xml-dtd
+<!DOCTYPE 根元素名 SYSTEM "外部DTD的URI">
+```
+
+
+
+### <a id="dtd_ref_pub">公用DTD</a>
+
+公用DTD是一种特殊的外部DTD。它是由某个权威机构制定，供特定行业或公众使用。
+
+公用DTD通过**PUBLIC**关键字引入。
+
+公用DTD与外部DTD区别:
+
+1. **PUBLIC**关键字
+
+2. 公用DTD多了个DTD标识名
+
+   
+
+基础语法:
+
+```xml-dtd
+<!DOCTYPE 根元素 PUBLIC "DTD标识名" "公用DTD的URI">
+```
+
+例子:
+
+![XMLSchema文档截图](xml_dtd.assets/2021-04-01 23-19-10屏幕截图.png)
+
+
+
+### 
 
 
 
@@ -28,6 +80,10 @@ dtd的声明与XML声明语法相同
 
 
 ### <a id="dtd_element">元素</a>
+
+XML元素可以为空，可以为文本字符串，可以包含若干子元素，每个子元素又可包含若干子元素。
+
+DTD是通过元素之间的父子关系，描述了整个文件的结构。
 
 基础语法:
 
