@@ -323,7 +323,7 @@ S  ： 选中内容添加包围并独成一行
 
 [undotree](https://github.com/mbbill/undotree)
 
-````vim
+```vim
 " -----------------------------
 "       UndoTree设置
 " -----------------------------
@@ -333,8 +333,6 @@ nnoremap <leader>udt :UndotreeToggle <CR>
 set undofile
 set undodir=~/.local/share/nvim/.undodir
 ```
-
-
 
 ### vim-gitgutter
 
