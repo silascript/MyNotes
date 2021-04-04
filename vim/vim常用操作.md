@@ -687,19 +687,9 @@ endtry
 
 
 
-
-
 ## 常用插件使用
 
-[查阅neovim中插件相关介绍](./neovim相关.md)
-
-
-
-
-
-
-
-
+[vim插件相关介绍](./vim_plugin.md)
 
 
 
