@@ -1,0 +1,389 @@
+# vim 常用插件
+
+
+
+### Plug插件
+
+windows下装Plug插件
+
+```po
+md ~\AppData\Local\nvim\autoload
+$uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+(New-Object Net.WebClient).DownloadFile(
+  $uri,
+  $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(
+    "~\AppData\Local\nvim\autoload\plug.vim"
+  )
+)
+```
+
+
+
+其中“~\AppData\Local\nvim\autoload\plug.vim”，可以自行定义下载安装plug.vim文件的目录，可以用官方给的，就在\AppData\Local\nvim\autoload下。如果是用scoop安装neovim的，可以放在
+
+current\share\nvim\runtime\autoload这个目录下，同样起效。
+
+
+
+**Plug插件配置**:
+
+```vim
+ call plug#begin()
+
+ Plug 'vim-airline/vim-airline'
+
+call plug#end()
+```
+
+> 如果begin()中不写具体插件安装地下，windows下会装在"C:\Users\用户名\AppData\Local\nvim\plugged"这个地址下。
+>
+> 在begin与end之间是配置各种插件
+
+写完后，重启nvim后，使用PlugInstall命令来执行安装。如果不使用某插件就在配置文件中注释掉，再执行PlugUpdate命令完成移除插件。
+
+
+
+### 自动括号匹配
+
+```vim
+Plug 'jiangmiao/auto-pairs'
+```
+
+[https://github.com/jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs)
+
+
+
+### snippets插件
+
+```shell
+" snippet相关
+" snippet调用引擎
+Plug 'SirVer/ultisnips'
+" snippet仓库
+Plug 'honza/vim-snippets'
+```
+
+>ultisnips这个插件依赖python,而且是特定版本，特别恶心,所以慎用！
+
+使用另一个snippet引擎：**SnipMate**
+
+**snipmate**这个插件需要依赖其他两个插件，所需插件如下配置:
+
+```shell
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+
+```
+
+
+
+自定义snippets文件
+
+在~/.vim/目录新建一个目录**snippets**目录，用来存在自定义的snippets文件。
+
+因为此目录位于所有插件之外，所以你自定义的snippets文件不会因为插件更新而被删除。
+
+在snippets目录中建立你自定义的snippets文件，文件后缀名为**snippets**。
+
+例如，xml的snippets，就新建**xml.snippets**文件。
+
+snippets语法格式请参考[vim-snippets](https://github.com/honza/vim-snippets)
+
+
+
+### 格式化插件
+
+##### vim-codefmt
+
+此插件是**google**开发的!
+
+```shell
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+```
+
+vim-maktaba 这个插件得一起装，不然会报错。
+
+vim-codefmt使用，此插件对于C、C++、Java语言，依赖clang-format，所以得先安装clang-format,并且设置好默认的格式化配置文件。
+
+clang-format全局配置文件是放在用户根目录下的**.clang-format**,既~/.clang-format。
+
+样例：
+
+```yaml
+BasedOnStyle: Google					# 配置格式化基于哪家的风格 有Google LLVM 微软等
+# BasedOnStyle: LLVM
+# BasedOnStyle: Microsoft
+IndentWidth: 4							# 缩进宽度
+TabWidth: 4								# tab缩进宽度
+# UseTab: Always
+UseTab: AlignWithSpaces					# 是否使用Tab缩进
+AllowShortFunctionsOnASingleLine: Empty	# 简单函数格式化成单行 Empty是函数体是空的才格式化成单行样式
+AllowShortBlocksOnASingleLine: Empty	# 简单代码块格式化成单行 Empty是代码块是空的才格式化单行样式
+AlignConsecutiveAssignments: true		# 连续赋值对齐
+# AlignConsecutiveDeclarations: true	# 连续声明对齐
+```
+
+
+
+vim-codefmt插件在vim中使用，就两个主要命令:
+
+1. **:FormatLines**:格式化某些行代码
+
+2. **:FormatCode**：格式化整页代码
+
+
+
+### 快速注释
+
+nerdcommentor
+
+[https://github.com/preservim/nerdcommenter](https://github.com/preservim/nerdcommenter)
+
+简单配置：
+
+```vim
+" 注释插入空格
+let g:NERDSpaceDelims = 1
+" 注释插件空行
+let g:NERDCommentEmptyLines = 1
+```
+
+nerdcommentor 默认快捷键:
+
+注释: <Leader>cc
+
+取消注释:<Leader>cu
+
+Leader默认为**\\**
+
+
+
+### airline
+
+[https://github.com/vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
+
+包括airline的样式插件
+
+```vim
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+```
+
+
+
+简单配置:
+
+```vim
+let g:airline_extensions = ['branch','tabline']
+
+" buffer文件名及路径显示格式
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+" airline样式设置
+let g:airline_theme = 'dark'
+
+" 使用powerline font
+let g:airline_powerline_fonts=1
+
+" 设置airline的theme
+let g:airline_theme='dark'
+
+```
+
+
+
+### 文件类型图标
+
+[https://github.com/ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
+
+![image-20200618134854822](vim_plugin.assets/image-20200618134854822.png)
+
+
+
+### 语法高亮增强
+
+[https://github.com/sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot)
+
+
+
+### Surround
+
+[https://github.com/tpope/vim-surround](https://github.com/tpope/vim-surround)
+
+```vim
+" ---------------------------------------------------------
+"						 surround使用
+" ---------------------------------------------------------
+" 添加双引号 ysiw+"
+" 如果要添加tag符号，即尖括号可以使用快捷命令ysiwt
+" 注意如果是ysiw<这方式，必须是左尖括号，才是成对tag
+" 如果是ysiw> 使用了右尖括号,那就会变成单tag
+" 替换格式: cs 符号 符号
+" 如将tag符号即<>这种尖括号替换成其他符号可以使用cst快捷命令
+" 删除格式: ds 符号
+" 行包围符号格式: yss 符号
+" 行包围添加小括号快捷命令: yssb
+" 行包围尖括号得分两步：yss<或者ysst 然后输入尖括号中的内容
+" 行包围尖括号道理同新加一样，分左尖括号和右尖括号，左双右单
+"
+" ---------------------------------------------------------
+```
+
+正常模式
+
+\-----------
+
+ds ： 	删除包围
+
+cs ： 	修改包围
+
+ys ： 	添加包围
+
+yS ： 	添加包围并替换包围文本
+
+yss ： 	添加一行包围
+
+ySs ： 	添加包围内容独成一行
+
+ySS ： 	添加包围内容独成一行
+
+ysiw": 	单词周围加双引号
+
+ysiw(: 	单词周围加圆括号，左括号是带空格的
+
+ysiw]: 	单词周围加方括号，右括号不带空格
+
+ysiWb: 	以空格为分界加圆括号，这是不带空格的括号，大 `B` 代表不带空格的花括号
+
+ 
+
+可视模式
+
+\-----------
+
+s  ： 给选中内容添加包围
+
+S  ： 选中内容添加包围并独成一行
+
+ 
+
+插入模式
+
+\-----------
+
+<CTRL-s> ： 添加一个包围
+
+<CTRL-s><CTRL-s> ： 添加包围内容独成一行
+
+<CTRL-g>s ： 添加一个包围
+
+<CTRL-g>S ： 添加包围内容独成一行
+
+
+
+### NerdTree
+
+[https://github.com/preservim/nerdtree](https://github.com/preservim/nerdtree)
+
+
+
+### easymotion
+
+[https://github.com/easymotion/vim-easymotion](https://github.com/easymotion/vim-easymotion)
+
+常用操作:
+
+(1)  **跳转到当前光标前后的位置**
+
+<leader><leader>w 
+
+<leader><leader>b
+
+(2) **搜索**
+
+<leader><leader>s
+
+(3) **行级跳转**
+
+<leader><leader>j
+
+<leader><leader>k
+
+(4) **行内跳转**
+
+<leader><leader>h
+
+<leader><leader>l
+
+
+
+### undo tree
+
+[undotree](https://github.com/mbbill/undotree)
+
+````vim
+" -----------------------------
+"       UndoTree设置
+" -----------------------------
+"映射快捷键
+nnoremap <leader>udt :UndotreeToggle <CR>
+" 设置undo文件的存放目录(得事先mkdir)
+set undofile
+set undodir=~/.local/share/nvim/.undodir
+```
+
+
+
+### vim-gitgutter
+
+[vim-gitgutter](https://github.com/airblade/vim-gitgutter)
+
+基础配置
+
+```vim
+" -----------------------
+"       GitGutter设置
+" -----------------------
+" 开启gitgutter
+let g:gitgutter_enabled = 1
+
+```
+
+vim-gigutter各种常用命令:
+
+​	**:GitGutterToggle**		开启关闭gutter
+
+​	**:GitGutterLineHighlightsToggle** 	开启关闭高亮相关行
+
+
+
+### vim-fugitive
+
+[https://github.com/tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
+
+**常用命令:**
+
+```shell
+:Git commit
+:Git push
+```
+
+**:Git** 后加git的常用命令，跟在终端下使用git相同，push提交时会切出终端输入远程仓库的用户名和密码。
+
+如果在neovim中使用**:Git push**不能弹出输入用户名和密码，就使用**:terminal git push**
+
+
+
+### LoremIpsum
+
+[https://github.com/vim-scripts/loremipsum](https://github.com/vim-scripts/loremipsum)
+
+常用命令:
+
+```shell
+:Loremipsum  " 生成默认文本
+:Loremipsum 数字 " 生成指定字符数目的文本
+```
+
