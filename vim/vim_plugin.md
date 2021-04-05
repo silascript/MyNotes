@@ -157,8 +157,6 @@ AlignConsecutiveAssignments: true		# 连续赋值对齐
 # AlignConsecutiveDeclarations: true	# 连续声明对齐
 ```
 
-
-
 vim-codefmt插件在vim中使用，就两个主要命令:
 
 1. **:FormatLines**:格式化某些行代码
@@ -258,7 +256,7 @@ let g:vim_markdown_folding_level = 6 //折叠级别 未设置默认为1
 
 ```
 其实vim-markdown折叠功能有点坑，折叠是折了，但展开输入内容，1秒就重新折上~
-所以还是用vim8内置的折叠功能好了!
+所以还是用vim8内置的折叠功能或[vim-markdown-folding](#vim-markdown-folding)这个插件好了!
 
 
 
@@ -440,9 +438,6 @@ vim-gigutter各种常用命令:
 ```
 
 
-
-
-
 ### 预览插件
 
 [vim-livedown](https://github.com/shime/vim-livedown)
@@ -468,6 +463,20 @@ Plug 'shime/vim-livedown',{'on':['LivedownPreview','LivedownToggle','LivedownKil
 ```shell
   pip install grip
 ```
+
+### MarkDown相关
+
+#### [vim-markdown-folding](https://github.com/masukomi/vim-markdown-folding)
+
+```vim
+ let g:markdown_fold_style = 'nested' // 默认不设置是Stacked
+ set foldlevel=3   //折叠级别
+
+```
+还有其他命令:
+* **:set foldlevel=数字**: 设置折叠级别
+* **zM**: 相当于set foldlevel=0
+
 
 
 
