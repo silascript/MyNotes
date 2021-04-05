@@ -117,7 +117,7 @@ snippets语法格式请参考[vim-snippets](https://github.com/honza/vim-snippet
 
 ### 格式化插件
 
-##### vim-codefmt
+#### vim-codefmt
 
 此插件是**google**开发的!
 
@@ -129,6 +129,15 @@ Plugin 'google/vim-codefmt'
 vim-maktaba 这个插件得一起装，不然会报错。
 
 vim-codefmt使用，此插件对于C、C++、Java语言，依赖clang-format，所以得先安装clang-format,并且设置好默认的格式化配置文件。
+
+各大语言使用的格式化工具:
+
+* C、C++和Java用的都是**Clang-Format**
+* go 用的是gofmt
+* HTML、CSS、SASS、LESS、JSON用的是nodejs 的**js-beautify**
+* rust用的是rustfmt
+
+顺便说下Clang-Format:
 
 clang-format全局配置文件是放在用户根目录下的**.clang-format**,既~/.clang-format。
 
@@ -227,7 +236,29 @@ let g:airline_theme='dark'
 
 ### 语法高亮增强
 
+
 [vim-polyglot](https://github.com/sheerun/vim-polyglot)
+
+vim-polyglot这个插件是插件集，它集成了众多语言相关的插件,语法高亮只是其中一个功能。
+用户可以对某子插件进行自行设置。
+
+
+#### 部分子插件
+
+##### markdown
+[vim-markdown](https://github.com/plasticboy/vim-markdown)
+
+polyglot中的vim-markdown只有高法及**Concealing**功能。
+如果想要使用**vim-markdown**代码折叠，就得安装vim-markdown插件。
+
+vim-markdown折叠功能相关设置如下:
+```vim
+let g:vim_markdown_folding_disabled = 1 //0: 开启折叠 1: 关闭折叠
+let g:vim_markdown_folding_level = 6 //折叠级别 未设置默认为1
+
+```
+其实vim-markdown折叠功能有点坑，折叠是折了，但展开输入内容，1秒就重新折上~
+所以还是用vim8内置的折叠功能好了!
 
 
 
@@ -429,3 +460,16 @@ Plug 'shime/vim-livedown',{'on':['LivedownPreview','LivedownToggle','LivedownKil
 ```
 
 后面那{'on':....}是Plug的**按需加载**的设置
+
+
+使用python的模块[grip](https://github.com/joeyespo/grip)，也能预览markdown
+
+首先安装安装grip
+```shell
+  pip install grip
+```
+
+
+
+
+

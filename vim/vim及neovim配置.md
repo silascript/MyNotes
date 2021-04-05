@@ -1,8 +1,8 @@
-## VIM及NeoVIM配置
+# VIM及NeoVIM配置
 
 ## neovim配置
 
-#### init.vim 配置文件
+### init.vim 配置文件
 
 
 
@@ -10,7 +10,7 @@
 
 ### 常用设置
 
-```vim
+```vimscript
 " 开启行号
 set number
 " 高亮当前行
@@ -18,12 +18,7 @@ set cursorline
 " 编码
 set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,shift-jis,latin1
-
-
-
 ```
-
-
 
 ### 特别设置
 
