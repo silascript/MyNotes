@@ -43,13 +43,36 @@ call plug#end()
 
 
 
+Plug配置插件还可以**按需加载**:
+
+例子:
+
+```shell
+Plug 'othree/xml.vim',{'for':'xml'}
+```
+
+```shell
+Plug 'google/vim-codefmt',{'on':['FormatCode','FormatLines']}
+```
+
+常用**按需加载**:
+
+| `do`  | Post-update hook，某些vim插件在完成安装或更新后，需要执行额外的操作，可以使用 do 选项指定具体的操作或函数 |
+| ----- | ------------------------------------------------------------ |
+| `on`  | 按需加载: vim命令或`<Plug>`-mappings                         |
+| `for` | 按需加载: 文件类型                                           |
+
+
+
+
+
 ### 自动括号匹配
 
 ```vim
 Plug 'jiangmiao/auto-pairs'
 ```
 
-[https://github.com/jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs)
+[auto-pairs](https://github.com/jiangmiao/auto-pairs)
 
 
 
@@ -139,7 +162,7 @@ vim-codefmt插件在vim中使用，就两个主要命令:
 
 nerdcommentor
 
-[https://github.com/preservim/nerdcommenter](https://github.com/preservim/nerdcommenter)
+[nerdcommenter](https://github.com/preservim/nerdcommenter)
 
 简单配置：
 
@@ -162,7 +185,7 @@ Leader默认为**\\**
 
 ### airline
 
-[https://github.com/vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
+[vim-airline](https://github.com/vim-airline/vim-airline)
 
 包括airline的样式插件
 
@@ -196,7 +219,7 @@ let g:airline_theme='dark'
 
 ### 文件类型图标
 
-[https://github.com/ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
+[vim-devicons](https://github.com/ryanoasis/vim-devicons)
 
 ![image-20200618134854822](vim_plugin.assets/image-20200618134854822.png)
 
@@ -204,13 +227,13 @@ let g:airline_theme='dark'
 
 ### 语法高亮增强
 
-[https://github.com/sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot)
+[vim-polyglot](https://github.com/sheerun/vim-polyglot)
 
 
 
 ### Surround
 
-[https://github.com/tpope/vim-surround](https://github.com/tpope/vim-surround)
+[vim-surround](https://github.com/tpope/vim-surround)
 
 ```vim
 " ---------------------------------------------------------
@@ -285,13 +308,13 @@ S  ： 选中内容添加包围并独成一行
 
 ### NerdTree
 
-[https://github.com/preservim/nerdtree](https://github.com/preservim/nerdtree)
+[nerdtree](https://github.com/preservim/nerdtree)
 
 
 
 ### easymotion
 
-[https://github.com/easymotion/vim-easymotion](https://github.com/easymotion/vim-easymotion)
+[vim-easymotion](https://github.com/easymotion/vim-easymotion)
 
 常用操作:
 
@@ -359,7 +382,7 @@ vim-gigutter各种常用命令:
 
 ### vim-fugitive
 
-[https://github.com/tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
+[vim-fugitive](https://github.com/tpope/vim-fugitive)
 
 **常用命令:**
 
@@ -376,7 +399,7 @@ vim-gigutter各种常用命令:
 
 ### LoremIpsum
 
-[https://github.com/vim-scripts/loremipsum](https://github.com/vim-scripts/loremipsum)
+[loremipsum](https://github.com/vim-scripts/loremipsum)
 
 常用命令:
 
@@ -385,3 +408,24 @@ vim-gigutter各种常用命令:
 :Loremipsum 数字 " 生成指定字符数目的文本
 ```
 
+
+
+
+
+### 预览插件
+
+[vim-livedown](https://github.com/shime/vim-livedown)
+
+此插件使用到nodejs模块livedown，所以得先安装node的模块:
+
+```shell
+npm install -g livedown
+```
+
+.vimrc中加入以下代码:
+
+```shell
+Plug 'shime/vim-livedown',{'on':['LivedownPreview','LivedownToggle','LivedownKill']}
+```
+
+后面那{'on':....}是Plug的**按需加载**的设置
