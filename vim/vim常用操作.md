@@ -15,8 +15,13 @@
 	* [格式化](#op_normal_format)
 	* [标签、Buffer及窗口](#op_normal_tab_buffer_window)
 		* [标签页](#op_normal_tabs)
+		* [窗口](#op_normal_windows)
+		* [Buffer](#op_normal_buffer)
 * [Insert模式操作](#op_insert)
+	* [从normal模式进入insert模式](#op_insert_nortoin)
 * [Visual模式操作](#op_visual)
+	* [词选择](#op_visual_sel_word)
+* [小技巧](#tricks)
 * [基础配置](#config_basic)
 
 
@@ -242,12 +247,11 @@
 **<**:			选中状态，**<**能让选中内容向左缩进
 
 
-
 ### <span id="op_normal_fold">折叠</span>
 
 激活折叠功能:
 
-```shell
+```shellop_insert_nortoin
 :set foldenable 
 :set foldmethod = indent
 ```
@@ -257,8 +261,6 @@
 ```shell
 :set nofoldenable
 ```
-
-
 
 **zf**:		将选中的代码块折叠
 
@@ -278,7 +280,6 @@
 
 **zM**:	  关闭所有折叠
 
-​	
 
 **zfip**:	  折叠一个代码块(不用先对代码块选取)
 
@@ -315,7 +316,7 @@
 
 #### <span id="op_normal_tabs">标签页</span>
 
-----
+---
 
 **:tabe**:	  新建一个标签页
 
@@ -333,7 +334,7 @@
 
 
 
-#### 窗口
+#### <span id="op_normal_windows">窗口</span>
 
 ----
 
@@ -343,7 +344,6 @@
 
 **:vsp**:		 将当前窗口分割成两垂直窗口(文档在两窗口显示的内容完全一样)
 
-​	
 
 ###### 新建窗口
 
@@ -359,7 +359,6 @@
 
 **ctrl+w+w**:	不定向窗口切换
 
-​	
 
 ###### 窗口关闭
 
@@ -369,7 +368,6 @@
 
 **:only**:		  只保留当前窗口，其余关闭
 
-​	
 
 ###### 调整窗口大小
 
@@ -411,7 +409,7 @@ vim -p 文档1 文档2 ....
 
 
 
-#### Buffer
+#### <span id="op_normal_buffer">Buffer</span>
 
 ----
 
@@ -439,7 +437,7 @@ vim -p 文档1 文档2 ....
 
 ## <spana id="op_insert">Insert模式常用操作</span>
 
-### 从normal模式进入insert模式的方式
+### <span id="op_insert_nortoin">从normal模式进入insert模式的方式</span>
 
 #### 常用方式
 
@@ -513,7 +511,7 @@ vim -p 文档1 文档2 ....
 
 
 
-### 词选择
+### <span id="op_visual_sel_word">词选择</span>
 
 **vw**: 	选择光标所在位置至词尾空格(如果光标在词首那就相当于选了这个词)
 
@@ -533,7 +531,6 @@ vim -p 文档1 文档2 ....
 
 **vip**:		选取一个段落不包括段落后空行
 
-​		
 
 ##### 某范围内的选取
 
@@ -559,7 +556,7 @@ vim -p 文档1 文档2 ....
 
 
 
-### 小技巧
+### <span id="tricks">小技巧</span>
 
 大小写转换
 
