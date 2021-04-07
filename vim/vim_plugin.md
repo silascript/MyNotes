@@ -1,8 +1,14 @@
 # vim 常用插件
 
 
+* [Plug插件](#plug)
+* [自动符号](#plugin_auto_pairs)
+* [snippets插件](#plugin_snippets)
 
-### Plug插件
+* [关于LSP及补全](#lsp_complete)
+
+
+### <span id="plug">Plug插件</span>
 
 windows下装Plug插件
 
@@ -66,7 +72,7 @@ Plug 'google/vim-codefmt',{'on':['FormatCode','FormatLines']}
 
 
 
-### 自动括号匹配
+### <span id="plugin_auto_pairs">自动括号匹配</span>
 
 ```vim
 Plug 'jiangmiao/auto-pairs'
@@ -76,7 +82,7 @@ Plug 'jiangmiao/auto-pairs'
 
 
 
-### snippets插件
+### <span id="plugin_snippets">snippets插件</span>
 
 ```shell
 " snippet相关
@@ -479,6 +485,7 @@ Plug 'shime/vim-livedown',{'on':['LivedownPreview','LivedownToggle','LivedownKil
 
 
 
+### <span id="lsp_complete">关于LSP及补全</span>
 
-
+[LSP及补全](!LSP_Complete.md)
 
