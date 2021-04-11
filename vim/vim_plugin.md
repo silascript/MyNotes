@@ -1,12 +1,15 @@
 # vim 常用插件
 
-
 * [Plug插件](#plug)
 * [自动符号](#plugin_auto_pairs)
 * [snippets插件](#plugin_snippets)
 
+* [MarkDown相关](#plugin_markdown)
+  * [Markdown预览插件](#plugin_md_privew)
+    * [markdown-preview](#plugin_md_privew_1)
+    * [vim-markdown-preview](#plugin_md_privew_2)
+    * [preview-markdown.vim](#plugin_md_privew_3)
 * [关于LSP及补全](#lsp_complete)
-
 
 ### <span id="plug">Plug插件</span>
 
@@ -23,13 +26,9 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 )
 ```
 
-
-
 其中“~\AppData\Local\nvim\autoload\plug.vim”，可以自行定义下载安装plug.vim文件的目录，可以用官方给的，就在\AppData\Local\nvim\autoload下。如果是用scoop安装neovim的，可以放在
 
 current\share\nvim\runtime\autoload这个目录下，同样起效。
-
-
 
 **Plug插件配置**:
 
@@ -46,8 +45,6 @@ call plug#end()
 > 在begin与end之间是配置各种插件
 
 写完后，重启nvim后，使用PlugInstall命令来执行安装。如果不使用某插件就在配置文件中注释掉，再执行PlugUpdate命令完成移除插件。
-
-
 
 Plug配置插件还可以**按需加载**:
 
@@ -68,10 +65,6 @@ Plug 'google/vim-codefmt',{'on':['FormatCode','FormatLines']}
 | `on`  | 按需加载: vim命令或`<Plug>`-mappings                         |
 | `for` | 按需加载: 文件类型                                           |
 
-
-
-
-
 ### <span id="plugin_auto_pairs">自动括号匹配</span>
 
 ```vim
@@ -79,8 +72,6 @@ Plug 'jiangmiao/auto-pairs'
 ```
 
 [auto-pairs](https://github.com/jiangmiao/auto-pairs)
-
-
 
 ### <span id="plugin_snippets">snippets插件</span>
 
@@ -105,8 +96,6 @@ Plug 'garbas/vim-snipmate'
 
 ```
 
-
-
 自定义snippets文件
 
 在~/.vim/目录新建一个目录**snippets**目录，用来存在自定义的snippets文件。
@@ -118,8 +107,6 @@ Plug 'garbas/vim-snipmate'
 例如，xml的snippets，就新建**xml.snippets**文件。
 
 snippets语法格式请参考[vim-snippets](https://github.com/honza/vim-snippets)
-
-
 
 ### 格式化插件
 
@@ -150,17 +137,17 @@ clang-format全局配置文件是放在用户根目录下的**.clang-format**,�
 样例：
 
 ```yaml
-BasedOnStyle: Google					# 配置格式化基于哪家的风格 有Google LLVM 微软等
+BasedOnStyle: Google     # 配置格式化基于哪家的风格 有Google LLVM 微软等
 # BasedOnStyle: LLVM
 # BasedOnStyle: Microsoft
-IndentWidth: 4							# 缩进宽度
-TabWidth: 4								# tab缩进宽度
+IndentWidth: 4       # 缩进宽度
+TabWidth: 4        # tab缩进宽度
 # UseTab: Always
-UseTab: AlignWithSpaces					# 是否使用Tab缩进
-AllowShortFunctionsOnASingleLine: Empty	# 简单函数格式化成单行 Empty是函数体是空的才格式化成单行样式
-AllowShortBlocksOnASingleLine: Empty	# 简单代码块格式化成单行 Empty是代码块是空的才格式化单行样式
-AlignConsecutiveAssignments: true		# 连续赋值对齐
-# AlignConsecutiveDeclarations: true	# 连续声明对齐
+UseTab: AlignWithSpaces     # 是否使用Tab缩进
+AllowShortFunctionsOnASingleLine: Empty # 简单函数格式化成单行 Empty是函数体是空的才格式化成单行样式
+AllowShortBlocksOnASingleLine: Empty # 简单代码块格式化成单行 Empty是代码块是空的才格式化单行样式
+AlignConsecutiveAssignments: true  # 连续赋值对齐
+# AlignConsecutiveDeclarations: true # 连续声明对齐
 ```
 
 vim-codefmt插件在vim中使用，就两个主要命令:
@@ -168,8 +155,6 @@ vim-codefmt插件在vim中使用，就两个主要命令:
 1. **:FormatLines**:格式化某些行代码
 
 2. **:FormatCode**：格式化整页代码
-
-
 
 ### 快速注释
 
@@ -194,8 +179,6 @@ nerdcommentor 默认快捷键:
 
 Leader默认为**\\**
 
-
-
 ### airline
 
 [vim-airline](https://github.com/vim-airline/vim-airline)
@@ -206,8 +189,6 @@ Leader默认为**\\**
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 ```
-
-
 
 简单配置:
 
@@ -228,43 +209,38 @@ let g:airline_theme='dark'
 
 ```
 
-
-
 ### 文件类型图标
 
 [vim-devicons](https://github.com/ryanoasis/vim-devicons)
 
 ![image-20200618134854822](vim_plugin.assets/image-20200618134854822.png)
 
-
-
 ### 语法高亮增强
-
 
 [vim-polyglot](https://github.com/sheerun/vim-polyglot)
 
 vim-polyglot这个插件是插件集，它集成了众多语言相关的插件,语法高亮只是其中一个功能。
 用户可以对某子插件进行自行设置。
 
-
 #### 部分子插件
 
 ##### markdown
+
 [vim-markdown](https://github.com/plasticboy/vim-markdown)
 
 polyglot中的vim-markdown只有高法及**Concealing**功能。
 如果想要使用**vim-markdown**代码折叠，就得安装vim-markdown插件。
 
 vim-markdown折叠功能相关设置如下:
+
 ```vim
 let g:vim_markdown_folding_disabled = 1 //0: 开启折叠 1: 关闭折叠
 let g:vim_markdown_folding_level = 6 //折叠级别 未设置默认为1
 
 ```
+
 其实vim-markdown折叠功能有点坑，折叠是折了，但展开输入内容，1秒就重新折上~
 所以还是用vim8内置的折叠功能或[vim-markdown-folding](#vim-markdown-folding)这个插件好了!
-
-
 
 ### Surround
 
@@ -272,7 +248,7 @@ let g:vim_markdown_folding_level = 6 //折叠级别 未设置默认为1
 
 ```vim
 " ---------------------------------------------------------
-"						 surround使用
+"       surround使用
 " ---------------------------------------------------------
 " 添加双引号 ysiw+"
 " 如果要添加tag符号，即尖括号可以使用快捷命令ysiwt
@@ -293,29 +269,27 @@ let g:vim_markdown_folding_level = 6 //折叠级别 未设置默认为1
 
 \-----------
 
-ds ： 	删除包围
+ds ：  删除包围
 
-cs ： 	修改包围
+cs ：  修改包围
 
-ys ： 	添加包围
+ys ：  添加包围
 
-yS ： 	添加包围并替换包围文本
+yS ：  添加包围并替换包围文本
 
-yss ： 	添加一行包围
+yss ：  添加一行包围
 
-ySs ： 	添加包围内容独成一行
+ySs ：  添加包围内容独成一行
 
-ySS ： 	添加包围内容独成一行
+ySS ：  添加包围内容独成一行
 
-ysiw": 	单词周围加双引号
+ysiw":  单词周围加双引号
 
-ysiw(: 	单词周围加圆括号，左括号是带空格的
+ysiw(:  单词周围加圆括号，左括号是带空格的
 
-ysiw]: 	单词周围加方括号，右括号不带空格
+ysiw]:  单词周围加方括号，右括号不带空格
 
-ysiWb: 	以空格为分界加圆括号，这是不带空格的括号，大 `B` 代表不带空格的花括号
-
- 
+ysiWb:  以空格为分界加圆括号，这是不带空格的括号，大 `B` 代表不带空格的花括号
 
 可视模式
 
@@ -324,8 +298,6 @@ ysiWb: 	以空格为分界加圆括号，这是不带空格的括号，大 `B` �
 s  ： 给选中内容添加包围
 
 S  ： 选中内容添加包围并独成一行
-
- 
 
 插入模式
 
@@ -339,13 +311,9 @@ S  ： 选中内容添加包围并独成一行
 
 <CTRL-g>S ： 添加包围内容独成一行
 
-
-
 ### NerdTree
 
 [nerdtree](https://github.com/preservim/nerdtree)
-
-
 
 ### easymotion
 
@@ -355,7 +323,7 @@ S  ： 选中内容添加包围并独成一行
 
 (1)  **跳转到当前光标前后的位置**
 
-<leader><leader>w 
+<leader><leader>w
 
 <leader><leader>b
 
@@ -374,8 +342,6 @@ S  ： 选中内容添加包围并独成一行
 <leader><leader>h
 
 <leader><leader>l
-
-
 
 ### undo tree
 
@@ -409,11 +375,9 @@ let g:gitgutter_enabled = 1
 
 vim-gigutter各种常用命令:
 
-​	**:GitGutterToggle**		开启关闭gutter
+​ **:GitGutterToggle**  开启关闭gutter
 
-​	**:GitGutterLineHighlightsToggle** 	开启关闭高亮相关行
-
-
+​ **:GitGutterLineHighlightsToggle**  开启关闭高亮相关行
 
 ### vim-fugitive
 
@@ -430,8 +394,6 @@ vim-gigutter各种常用命令:
 
 如果在neovim中使用**:Git push**不能弹出输入用户名和密码，就使用**:terminal git push**
 
-
-
 ### LoremIpsum
 
 [loremipsum](https://github.com/vim-scripts/loremipsum)
@@ -442,7 +404,6 @@ vim-gigutter各种常用命令:
 :Loremipsum  " 生成默认文本
 :Loremipsum 数字 " 生成指定字符数目的文本
 ```
-
 
 ### 预览插件
 
@@ -462,10 +423,10 @@ Plug 'shime/vim-livedown',{'on':['LivedownPreview','LivedownToggle','LivedownKil
 
 后面那{'on':....}是Plug的**按需加载**的设置
 
-
 使用python的模块[grip](https://github.com/joeyespo/grip)，也能预览markdown
 
 首先安装安装grip
+
 ```shell
   pip install grip
 ```
@@ -479,11 +440,57 @@ Plug 'shime/vim-livedown',{'on':['LivedownPreview','LivedownToggle','LivedownKil
  set foldlevel=3   //折叠级别
 
 ```
+
 还有其他命令:
+
 * **:set foldlevel=数字**: 设置折叠级别
 * **zM**: 相当于set foldlevel=0
 
+### vimspector
 
+[vimspector](https://github.com/puremourning/vimspector)
+
+这是一个vim下多语言图形界面debug插件!
+>A multi language graphical debugger for Vim
+
+安装:
+
+```vim
+Plugin 'puremourning/vimspector'
+```
+
+### <span id="plugin_markdown">Markdown 相关插件</span>
+
+#### <span id="plugin_md_privew_1">Markdown预览插件</span>
+
+Markdown 预览插件原理大同小异，都是通过启动一个小型［服务器］来加载渲染Markdown页面，从而实现预览效果。
+这小型［服务器］有可能是用Python实现，也有可能是NodeJS或其他技术。
+
+[markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
+
+这个插件是NodeJS实现，所以系统得装有NodeJS并且装上Yarn。
+常用命令：
+
+```vim
+ Start the preview
+:MarkdownPreview
+
+" Stop the preview"
+:MarkdownPreviewStop
+```
+
+#### <span id="plugin_md_privew_2">vim-markdown-preview</span>
+
+[vim-markdown-preview](https://github.com/JamshedVesuna/vim-markdown-preview)
+这个插件是通过Python实现的,要使用此插件得先装[Grip](#https://github.com/joeyespo/grip)(--GitHub Readme Instant Preview)
+
+#### <span id="plugin_md_privew_3">preview-markdown.vim</span>
+
+[preview-markdown.vim](https://github.com/skanehira/preview-markdown.vim)
+
+此插件需要[mrd](https://github.com/MichaelMure/mdr)(--MarkDown Renderer)
+>mdr is a standalone Markdown renderer for the terminal.
+因为这个插件是在vim内部使用terminal方式预览，所以对vim版本有限制：Vim 8.1.1401+
 
 ### <span id="lsp_complete">关于LSP及补全</span>
 

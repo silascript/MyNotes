@@ -12,6 +12,7 @@
 * [Vim 补全插件](#vp_complete)
 	* [deoplete](#vp_complete_deoplete)
 	* [ncm](#vp_complete_ncm)
+	* [coc](#vp_complete_coc)
 
 ## <span id="about_lsp">关于LSP</span>
 官方定义:
@@ -42,4 +43,7 @@ LSP相关网站:
 
 ### <span id="vp_complete_ncm">ncm/ncm2</span>
 [ncm2](!https://github.com/ncm2/ncm2)
+
+
+### <span id="vp_complete_coc">coc </span>
 
