@@ -3,6 +3,20 @@
 * [Plug插件](#plug)
 * [自动符号](#plugin_auto_pairs)
 * [snippets插件](#plugin_snippets)
+* [格式化插件](#plugin_format)
+* [注释插件](#plugin_comment)
+	[nerdcommentor](#plugin_nerdcommentor)
+* [状态栏插件](#plugin_statusline)
+	[airline](#plugin_sl_airline)
+* [文件类型图标](#plugin_filetype_icon)
+* [语法增强](#plugin_syntax)
+	* [ployglot](#plugin_syn_ployglot)
+		* [子插件](#plugin_syn_subplugin)
+* [符号操作](#plugin_operator)
+
+* [Git相关插件](#plugin_git)
+
+
 
 * [MarkDown相关](#plugin_markdown)
   * [Markdown预览插件](#plugin_md_privew)
@@ -108,7 +122,7 @@ Plug 'garbas/vim-snipmate'
 
 snippets语法格式请参考[vim-snippets](https://github.com/honza/vim-snippets)
 
-### 格式化插件
+### <span id="plugin_format">格式化插件</span>
 
 #### vim-codefmt
 
@@ -156,9 +170,9 @@ vim-codefmt插件在vim中使用，就两个主要命令:
 
 2. **:FormatCode**：格式化整页代码
 
-### 快速注释
+### <span id="plugin_comment">注释插件</span>
 
-nerdcommentor
+#### <span id="plugin_nerdcommentor">nerdcommentor</span>
 
 [nerdcommenter](https://github.com/preservim/nerdcommenter)
 
@@ -179,7 +193,9 @@ nerdcommentor 默认快捷键:
 
 Leader默认为**\\**
 
-### airline
+### <span id="plugin_statusline">状态栏插件</span>
+
+#### <span id="plugin_sl_airline">airline</span>
 
 [vim-airline](https://github.com/vim-airline/vim-airline)
 
@@ -209,22 +225,23 @@ let g:airline_theme='dark'
 
 ```
 
-### 文件类型图标
+### <span id="plugin_filetype_icon">文件类型图标</span>
 
 [vim-devicons](https://github.com/ryanoasis/vim-devicons)
 
 ![image-20200618134854822](vim_plugin.assets/image-20200618134854822.png)
 
-### 语法高亮增强
+### <span id="plugin_syntax">语法高亮增强</span>
 
+#### <span id="plugin_syn_ployglot">vim-polyglot</span>
 [vim-polyglot](https://github.com/sheerun/vim-polyglot)
 
 vim-polyglot这个插件是插件集，它集成了众多语言相关的插件,语法高亮只是其中一个功能。
 用户可以对某子插件进行自行设置。
 
-#### 部分子插件
+##### <span id="plugin_syn_subplugin">部分子插件</span>
 
-##### markdown
+###### markdown
 
 [vim-markdown](https://github.com/plasticboy/vim-markdown)
 
@@ -242,7 +259,9 @@ let g:vim_markdown_folding_level = 6 //折叠级别 未设置默认为1
 其实vim-markdown折叠功能有点坑，折叠是折了，但展开输入内容，1秒就重新折上~
 所以还是用vim8内置的折叠功能或[vim-markdown-folding](#vim-markdown-folding)这个插件好了!
 
-### Surround
+### <span id="plugin_operator">符号操作</span>
+
+#### Surround
 
 [vim-surround](https://github.com/tpope/vim-surround)
 
@@ -357,6 +376,7 @@ nnoremap <leader>udt :UndotreeToggle <CR>
 set undofile
 set undodir=~/.local/share/nvim/.undodir
 ```
+
 
 ### vim-gitgutter
 
