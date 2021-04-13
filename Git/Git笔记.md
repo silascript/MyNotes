@@ -2,8 +2,6 @@
 
 ## Git 基本操作
 
-
-
 ### 基本配置
 
 ```shell
@@ -12,11 +10,7 @@ git config --global user.email "邮箱"
 
 ```
 
-
-
 ### 基本流程操作
-
-
 
 #### 提交大概流程
 
@@ -25,8 +19,6 @@ git config --global user.email "邮箱"
 ```shell
 git init
 ```
-
-
 
 2. **向暂存区添加新修改**:
 
@@ -40,15 +32,11 @@ git init
 >git add .
 >```
 
-
-
 3. **提交到本地版本库**:
 
 ```shell
 git commit -m "提交注释"
 ```
-
-
 
 4. **提交到远程版本库**:
 
@@ -56,13 +44,16 @@ git commit -m "提交注释"
 git push
 ```
 
+push命令完整语法:
 
+```shell
+git push 远程名 本地分支:远程分支
 
-
+#关联远程仓库
+git push --set-upstream 远程名 本地分支:远程分支
+```
 
 #### 从远程获取数据
-
-
 
 * **从远程版本库克隆到本地**:
 
@@ -72,27 +63,28 @@ git clone 地址 [本地版本库名称]
 
 * **从远程版本库获取数据到本地**:
 
->```shell
->git fetch 地址
->```
->
->**fetch** 命令并不会自动合并或修改你当前的工作
->
->如果要自动合并远程数据到本地，应使用**pull**命令:
->
->```shell
->git pull
->```
->
->
+```shell
+git fetch 地址
+```
+
+**fetch** 命令并不会自动合并或修改你当前的工作
+
+如果要自动合并远程数据到本地，应使用**pull**命令:
+
+```shell
+git pull
+```
+
+pull完整语法:
+
+```shell
+git pull 远程名 本地分支:远程分支
 
 
 
-
+```
 
 ### 辅助操作
-
-
 
 查看版本当前状态:
 
@@ -102,8 +94,6 @@ git status
 
 ![](Git笔记.assets/2020-12-06 10-24-40屏幕截图.png)
 
-
-
 查看提交日志:
 
 ```shell
@@ -111,8 +101,6 @@ git log
 ```
 
 ![](Git笔记.assets/2020-12-06 10-26-02屏幕截图.png)
-
-
 
 查看当前分支:
 
@@ -122,8 +110,6 @@ git branch
 
 ![](Git笔记.assets/2020-12-06 10-26-57屏幕截图.png)
 
-
-
 查看暂存区:
 
 ```shell
@@ -131,8 +117,6 @@ git ls-files -s
 ```
 
 ![](Git笔记.assets/2020-12-06 10-28-33屏幕截图.png)
-
-
 
 查看远程版本库:
 
@@ -142,40 +126,30 @@ git remote show 远程版本库名称
 
 ![](Git笔记.assets/2020-12-06 10-54-53屏幕截图.png)
 
-
-
-
-
-
-
 ## Git 底层命令
 
 #### 基本概念
 
-​	Git 的核心部分是一个简单的键值对数据库(key-value data store)。 你可以向该数据库插入任意类型的内容,它会返回一个键值,通过该键值
+​ Git 的核心部分是一个简单的键值对数据库(key-value data store)。 你可以向该数据库插入任意类型的内容,它会返回一个键值,通过该键值
 可以在任意时刻再次检索(retrieve)该内容。
 
 #### 重要部件
 
-* **objects**目录:	存储所有数据内容
+* **objects**目录: 存储所有数据内容
 
-* **refs**目录:		  存储指向数据(分支)的提交对象的指针
+* **refs**目录:    存储指向数据(分支)的提交对象的指针
 
-* **HEAD**文件: 	指示目前被检出的分支
+* **HEAD**文件:  指示目前被检出的分支
 
-* **index**文件:		保存暂存区信息
+* **index**文件:  保存暂存区信息
 
 ![](Git笔记.assets/2020-12-02 22-37-58屏幕截图.png)
-
-
-
-
 
 #### Git对象
 
 ###### 常用命令
 
-​	**hash-object**
+​ **hash-object**
 
 >**-w** 选项指示 **hash-object** 命令存储数据对象;若不指定此选项,则该命令仅返回对应的键值。 **-w** 后跟要生成hash值的源目标。
 >
@@ -201,17 +175,11 @@ echo "hello world" | git hash-object --stdin
 
 ![](Git笔记.assets/2020-12-03 00-01-30屏幕截图.png)
 
-
-
 又如：
 
 ![](Git笔记.assets/2020-12-06 02-11-45屏幕截图.png)
 
-
-
-
-
-​	**cat-file**
+​ **cat-file**
 
 >**cat-file** 命令从 Git 那里取回数据。
 >
@@ -225,8 +193,6 @@ echo "hello world" | git hash-object --stdin
 >
 >**-t** 选项,可以让 Git 告诉我们其内部存储的任何对象类型
 
-
-
 示例:
 
 ```shell
@@ -235,29 +201,11 @@ git cat-file -p 3b18e512dba79e4c8300dd08aeb37f8e728b8dad
 
 结果:
 
-![](Git笔记.assets/2020-12-03 00-04-47屏幕截图.png)	
-
-
-
-
+![](Git笔记.assets/2020-12-03 00-04-47屏幕截图.png) 
 
 #### 树对象
 
-
-
-
-
 ![](Git笔记.assets/2020-12-06 02-14-33屏幕截图.png)
-
-
-
-
-
-
-
-
-
-
 
 ## GitHub使用
 
@@ -271,17 +219,15 @@ github访问慢可以使用重设host映射解决。
 
    >有两个常用网站可以检测
    >
-   >- http://ping.chinaz.com
+   >* <http://ping.chinaz.com>
    >
    >  ![](Git笔记.assets/2020-12-15 01-10-40屏幕截图.png)
    >
-   >- https://www.ipaddress.com
+   >* <https://www.ipaddress.com>
    >
    >  ![](Git笔记.assets/2020-12-15 01-13-12屏幕截图.png)
 
 检测出的ip，最好自己**ping**一下，选速度比较快的几个。
-
-
 
 2. 设置host文件
 
@@ -298,10 +244,6 @@ github访问慢可以使用重设host映射解决。
 >```
 >
 >
-
-
-
-
 
 需要重新设置host的地址:
 
@@ -321,10 +263,6 @@ github访问慢可以使用重设host映射解决。
 
 ***.githubusercontent.com** 这几个地址跟图片相关,如果github能访问但图片加载慢或加载不出来，就得配这几个地址了！
 
-
-
-
-
 #### 镜像替换
 
 换ip有时只有解决访问github网站问题，而clone操作仍会卡住，那么这就使用国内github的镜像网站来替换了。
@@ -335,26 +273,20 @@ github访问慢可以使用重设host映射解决。
 git config --global url."https://github.com.cnpmjs.org/".insteadOf https://github.com/
 ```
 
-​	注意：地址一定不能省略最后的**"/"**	
+​ 注意：地址一定不能省略最后的**"/"** 
 
-​	取消设置:
+​ 取消设置:
 
 ```shell
 git config --global --unset url.https://github.com/.insteadof
 ```
-
-
 
 国内镜像：
 
 * [github.com.cnpmjs.org](https://github.com.cnpmjs.org/)
 * [hub.fastgit.org](https://hub.fastgit.org)
 * [gitclone.com](https://gitclone.com)
-*  [doc.fastgit.org](https://doc.fastgit.org)
-
-
-
-
+* [doc.fastgit.org](https://doc.fastgit.org)
 
 #### 其他小工具
 
@@ -363,8 +295,6 @@ git config --global --unset url.https://github.com/.insteadof
 1. github hosts ip映射库: [GitHub520](https://github.com/521xueweihan/GitHub520)
 
 2. hosts管理小工具: [SwitchHosts](https://github.com/oldj/SwitchHosts)
-
-   
 
    SwitchHosts与GitHub520配合使用，能够方便快速使用最新的ip映射github相关的网址s
 

@@ -1,19 +1,51 @@
 
 # zsh 笔记
 
+* [常用配置](#zsh_conf)
+* [忽略大小写](#zsh_conf_insensitivity)
+
 * [插件](#zsh_plugins)
   * [插件管理器](#zsh_plugins_mgs)
 
   * [常用插件](#zsh_plugzsh_plugins_common)
+  * [fast-syntax-highlighting](#zsh_plugins_synhl)
   * [zsh_plugins_hsearch](#zsh_plugins_hsearch)
   * [autosuggestion](#zsh_plugins_autosuggestion)
   * [zsh_plugins_zcompletions](#zsh_plugins_zcompletions)
+
+## <span id="zsh_conf">常用配置</span>
+
+### <span id="zsh_conf_insensitivity">忽略大小写</span>
+
+```zsh
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+```
 
 ## <span id="zsh_plugins">插件</span>
 
 ### <span id="zsh_plugins_mgs">插件管理器</span>
 
 ### <span id="zsh_plugins_common">常用插件</span>
+
+#### <span id="zsh_plugins_synhl">fast-syntax-highlighting</span>
+
+[fast-syntax-highlighting](https://github.com/zdharma/fast-syntax-highlighting)
+
+高亮各种命令，为命令着色~
+甚至能换不同的配色方案。
+
+```zsh
+# 列出内置的配色方案清单
+fast-theme -l
+# 设置相应的配色方案
+fast-theme 配色方案名
+```
+
+使用zinit安装:
+
+```zsh
+zinit light zdharma/fast-syntax-highlighting
+```
 
 #### <span id="zsh_plugins_hsearch">history-search-multi-word</span>
 
