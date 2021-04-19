@@ -9,6 +9,7 @@
 	* [LanguageClient-neovim](#vp_lcn)
 
 * [Vim 补全插件](#vp_complete)
+	* [neocomplete](#vp_complete_neocomplete)
 	* [deoplete](#vp_complete_deoplete)
 	* [ncm](#vp_complete_ncm)
 	* [coc](#vp_complete_coc)
@@ -89,7 +90,33 @@ LSC只是提供与LSP对接，并将LSP传来的语言服务获取补全数据�
 ---
 
 ### <span id="vp_vim-lsp">vim-lsp</span>
-[vim-lsp]()
+[vim-lsp](https://github.com/prabirshrestha/vim-lsp)
+
+
+```vim
+	
+	" 关闭lsp的语法诊断
+	let g:lsp_diagnostics_enabled = 0
+
+	" 设置各语言LSP
+	if executable('clangd')
+		au User lsp_setup call lsp#register_server({
+			\ 'name': 'clangd',
+			\ 'cmd': {server_info->['clangd', '-background-index']},
+			\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+		\ })
+	endif
+	
+	if (executable('pyls'))
+		au User lsp_setup call lsp#register_server({
+		\ 'name': 'lsp-pyls',
+		\ 'cmd': {server_info->['pyls']},
+		\ 'allowlist': ['python']
+		\ })
+	endif
+
+```
+
 
 ---
 
@@ -99,11 +126,24 @@ LSC只是提供与LSP对接，并将LSP传来的语言服务获取补全数据�
 
 ## <span id="vp_complete">Vim 补全插件</span>
 
+
+### <span id="vp_complete_neocomplete">neocomplete.vim<span> 
+
+[neocomplete](https://github.com/Shougo/neocomplete.vim)
+
+neocomplete 不兼容vim8.2。而已没再来更新新功能，只有修bug。
+
+这插件必须是vim7.3.855以上 vim8以下的版本，而且是拥有lua特性的版本使用。
+
+这个插件现在基本可以忽略。
+
+
 ### <span id="vp_complete_deoplete">deoplete</span>
 [deoplete](!https://github.com/Shougo/deoplete.nvim)
 
-deoplete是一个补全框架
-实例框架需要与Language Server Client插件通信，拿到补全数据，才能将数据展示出来。
+deoplete是[neocomplete](#vp_complete_neocomplete)的改进版，适配vim8+及neovim。
+
+虽然叫补全框架，但实际框架需要与Language Server Client插件通信，拿到补全数据，才能将数据展示出来。
 所以这就涉及到也LSC插件的配置。有的补全框架，自己给了部分语言的LSC实现，有的是通过支持第三方LSC插件来实现。deoplete既有自己的LSC，也支持多种LSC插件。
 
 deoplete 安装:
@@ -167,36 +207,65 @@ deoplete也给出了source的支持列表:
 
 如果不用deoplete“推荐”的补全源，用其他补全源如vim-lsc或vim-lsp,就得为对deoplete指定补全源。
 
-**vim-lsc为补全源，deoplete的配置**
-因为比较悲剧的是，deoplete并没有对vim-lsc提供支持,幸好有人弄了个插件，用于“连接”deoplete与vim-lsc。
-[deoplete-vim-lsc](https://github.com/hrsh7th/deoplete-vim-lsc)
+#### vim-lsc为LSC
+要连接多语言LSC得通过再加个“管道”，即装个与这个LSC适配的“适配器”插件。
+如“适配”deoplete与vim-lsc，就需要[deoplete-vim-lsc](https://github.com/hrsh7th/deoplete-vim-lsc)。
 
 deoplete-vim-lsc的源码:
 ![deoplete-vim-lsc源码](LSP_Complete.assets/2021-04-16 23-10-22 的屏幕截图.png)
 可以看到vim-lsc的名称是**lsc**,所以上面deoplete配补全源为什么用**lsc**
-
-观察clangx的源码，看到了吧，name的值就是deoplete补全源中指定的LSC名称
-只不过clangx是“新儿子”，所以不用配源就能用。
+与clangx这种“亲儿子”的LSC不同，使用适配器适配的多语言LSC，在deoplete配置源时，得指定把LSC的name值--这是LSC唯一标识,通过这个名称的配置，补全框架deoplete就与这个LSC整合在一起了。
 
 使用vim-lsc时，为deoplete配补全源:
 ```vim
 	
-	" 源
+	" lsc就是vim-lsc的唯一标识
+	" min_pattern_length 是补全触发的字符个数，1就打一个字符就跳出补全候选菜单
+	call deoplete#custom#source('lsc',
+            \ 'min_pattern_length',
+            \ 1)
+
+	" 为各语言指定LSC
+	" 中括号中的lsc就是vim-lsc的唯一标识
 	let g:deoplete#custom#option={
 		\'sources': {
 		\ '_': ['buffer'],
 		\ 'c': ['lsc'],
 		\ 'cpp': ['lsc'],
 		\ 'python': ['lsc'],
-		\ 'rust': ['lsc'],
+		\ 'rust': ['lsc']
 		\},
-		\ 'min_pattern_length':1
 	\ }
 
 
 ```
-
+而vim-lsc那里也需要配置:
 [vim-lsc配置](#vp_vim-lsc)
+
+#### 使用[vim-lsp](#vp_vim-lsp)为LSC
+如果是deoplete使用的是vim-lsp，也是类似。需要装[vim-lsp](#vp_vim-lsp)和[deoplete-vim-lsp](https://github.com/lighttiger2505/deoplete-vim-lsp)
+**vim-lsp**配置LSC，可查看以上章节: [vim-lsp](#vp_vim-lsp)
+
+deoplete使用vim-lsp为补全源的配置如下：
+```vim
+
+call deoplete#custom#source('lsp',
+            \ 'min_pattern_length',
+            \ 1)
+
+	let g:deoplete#custom#option={
+		\'sources': {
+		\ 'c': ['lsp'],
+		\ 'cpp': ['lsp'],
+		\ 'python': ['lsp'],
+		\ 'rust': ['lsp'],
+		\},
+		\ 'smart_case': v:true
+	\ }
+
+
+```
+跟[vim-lsc](#vp_vim-lsc)几乎一样，就是lsc的名称换成了**lsp**
 
 
 #### deoplete 相关插件
