@@ -11,7 +11,12 @@
 * [Vim 补全插件](#vp_complete)
 	* [neocomplete](#vp_complete_neocomplete)
 	* [deoplete](#vp_complete_deoplete)
-	* [ncm](#vp_complete_ncm)
+		* [使用vim-lsc为LSC](#vp_deoplete_lsc)
+		* [使用vim-lsp为LSC](#vp_deoplete_lsp)
+		* [使用LanguageClient](#vp_deoplete_lcn)
+
+	* [ncm/ncm2](#vp_complete_ncm)
+	* [asyncomplete](#vp_complete_asyncomplete)
 	* [coc](#vp_complete_coc)
 
 ## <span id="about_lsp">关于LSP</span>
@@ -122,6 +127,33 @@ LSC只是提供与LSP对接，并将LSP传来的语言服务获取补全数据�
 
 ### <span id="vp_lcn">LanguageClient-neovim</span>
 
+[LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim)是用Rust语言写的一个LSC插件。
+这个LSC可以为[deoplete](#vp_complete_deoplete)及[ncm2](#vp_complete_ncm)补全框架提供补全数据源。
+LanguageClient为补全框架提供源的名称是**LanguageClient**。
+
+安装:
+```Vim
+	Plug 'autozimu/LanguageClient-neovim', {
+	\ 'branch': 'next',
+	\ 'do': 'bash install.sh',
+	\ }
+	
+```
+
+配置:
+```vim
+	" 为各语言指定LSP	
+	let g:LanguageClient_serverCommands = {
+	\ 'c':['clangd'],
+	\ 'cpp':['clangd'],
+	\ 'rust': ['rls'],
+	\ 'python': ['pyls'],
+	\ 'ruby': ['solargraph', 'stdio'],
+	\ }
+
+
+```
+
 ---
 
 ## <span id="vp_complete">Vim 补全插件</span>
@@ -207,7 +239,7 @@ deoplete也给出了source的支持列表:
 
 如果不用deoplete“推荐”的补全源，用其他补全源如vim-lsc或vim-lsp,就得为对deoplete指定补全源。
 
-#### vim-lsc为LSC
+#### <span id="vp_deoplete_lsc">使用[vim-lsc](#vp_vim-lsc)为LSC</span>
 要连接多语言LSC得通过再加个“管道”，即装个与这个LSC适配的“适配器”插件。
 如“适配”deoplete与vim-lsc，就需要[deoplete-vim-lsc](https://github.com/hrsh7th/deoplete-vim-lsc)。
 
@@ -242,7 +274,7 @@ deoplete-vim-lsc的源码:
 而vim-lsc那里也需要配置:
 [vim-lsc配置](#vp_vim-lsc)
 
-#### 使用[vim-lsp](#vp_vim-lsp)为LSC
+#### <span id="vp_deoplete_lsp">使用[vim-lsp](#vp_vim-lsp)为LSC</span>
 如果是deoplete使用的是vim-lsp，也是类似。需要装[vim-lsp](#vp_vim-lsp)和[deoplete-vim-lsp](https://github.com/lighttiger2505/deoplete-vim-lsp)
 **vim-lsp**配置LSC，可查看以上章节: [vim-lsp](#vp_vim-lsp)
 
@@ -267,6 +299,27 @@ call deoplete#custom#source('lsp',
 ```
 跟[vim-lsc](#vp_vim-lsc)几乎一样，就是lsc的名称换成了**lsp**
 
+
+#### <span id="vp_deoplete_lcn">使用[LanguageClient-neovim为LSC](#vp_lcn)为LSC</span>
+
+LanguageClient作为deoplete的LSC跟使用[vim-lsc](#)与[vim-lsp](#)类似。
+给deoplete的source 名称为**LanguageClient**。
+配置如下：
+```vim
+	
+	let g:deoplete#custom#option={
+		\'sources': {
+		\ '_': ['buffer'],
+		\ 'c': ['LanguageClient'],
+		\ 'cpp': ['LanguageClient'],
+		\ 'python': ['LanguageClient'],
+		\ 'rugy': ['LanguageClient'],
+		\ 'rust': ['LanguageClient']
+		\}
+	\ }
+
+
+```
 
 #### deoplete 相关插件
 
@@ -293,7 +346,15 @@ deoplete 其他“有趣”的补全源插件:
 ---
 
 ### <span id="vp_complete_ncm">ncm/ncm2</span>
-[ncm2](!https://github.com/ncm2/ncm2)
+[ncm2](https://github.com/ncm2/ncm2)
+
+### <span id="vp_complete_asyncomplete">asyncomplete</span>
+[asyncomplete](https://github.com/prabirshrestha/asyncomplete.vim)
+
+asyncomplete 这个补全框架是完全用vimscript写的，所以不需要像deoplete ncm2依赖python,coc依赖nodejs。
+asyncomplete 这补全框架源可以用自己那堆针对某语言的LSC，也可以用如vim-lsp这样多语言的LSC。
+多语言LSC插件，官方推荐是vim-lsp,为此官方还写了个“适配器”：[asyncomplete-lsp](https://github.com/prabirshrestha/asyncomplete-lsp.vim)。
+
 
 
 ### <span id="vp_complete_coc">coc </span>
