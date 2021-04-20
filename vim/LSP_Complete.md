@@ -252,7 +252,8 @@ deoplete-vim-lsc的源码:
 ```vim
 	
 	" lsc就是vim-lsc的唯一标识
-	" min_pattern_length 是补全触发的字符个数，1就打一个字符就跳出补全候选菜单
+	" min_pattern_length 是设置最少多少个字符触发补全菜单 
+	" vim-lsc默认是2个字符触发补全
 	call deoplete#custom#source('lsc',
             \ 'min_pattern_length',
             \ 1)
@@ -280,8 +281,10 @@ deoplete-vim-lsc的源码:
 
 deoplete使用vim-lsp为补全源的配置如下：
 ```vim
-
-call deoplete#custom#source('lsp',
+	
+	" 设置最少多少个字符触发补全菜单
+	" vim-lsp 默认是2个字符
+	call deoplete#custom#source('lsp',
             \ 'min_pattern_length',
             \ 1)
 
@@ -307,6 +310,12 @@ LanguageClient作为deoplete的LSC跟使用[vim-lsc](#)与[vim-lsp](#)类似。
 配置如下：
 ```vim
 	
+	" 设置最少多少个字符触发补全
+	" LanguageClient默认是1，就是这段代码不配就是一个字符就弹出初具一菜单
+	" call deoplete#custom#source('LanguageClient',
+	"        \ 'min_pattern_length',
+	"        \ 2)
+
 	let g:deoplete#custom#option={
 		\'sources': {
 		\ '_': ['buffer'],
