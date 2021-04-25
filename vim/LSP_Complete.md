@@ -14,7 +14,7 @@
 		* [使用vim-lsc为LSC](#vp_deoplete_lsc)
 		* [使用vim-lsp为LSC](#vp_deoplete_lsp)
 		* [使用LanguageClient](#vp_deoplete_lcn)
-
+	* [Completor](#vp_complete_completor)
 	* [ncm/ncm2](#vp_complete_ncm)
 	* [asyncomplete](#vp_complete_asyncomplete)
 	* [coc](#vp_complete_coc)
@@ -353,9 +353,26 @@ deoplete 其他“有趣”的补全源插件:
 
 
 ---
+### <span id="vp_complete_completor">Completor</span>
+[Completor](https://github.com/maralla/completor.vim)是用Python写的异步补全框架。
 
+安装:
+```vim
+	Plug 'maralla/completor.vim'
+```
+
+
+
+
+---
 ### <span id="vp_complete_ncm">ncm/ncm2</span>
 [ncm2](https://github.com/ncm2/ncm2)
+
+国人写的补全框架。
+
+keymap映射极度恶心,垃圾！
+
+
 
 ### <span id="vp_complete_asyncomplete">asyncomplete</span>
 [asyncomplete](https://github.com/prabirshrestha/asyncomplete.vim)
