@@ -5,28 +5,26 @@
 * [snippets插件](#plugin_snippets)
 * [格式化插件](#plugin_format)
 * [注释插件](#plugin_comment)
-	* [nerdcommentor](#plugin_nerdcommentor)
+	[nerdcommentor](#plugin_nerdcommentor)
 * [状态栏插件](#plugin_statusline)
-	* [airline](#plugin_sl_airline)
+	[airline](#plugin_sl_airline)
 * [文件类型图标](#plugin_filetype_icon)
 * [语法增强](#plugin_syntax)
-	* [ployglot](#plugin_syn_ployglot)
-		* [子插件](#plugin_syn_subplugin)
+ * [ployglot](#plugin_syn_ployglot)
+  * [子插件](#plugin_syn_subplugin)
 * [符号操作](#plugin_operator)
 
 * [Git相关插件](#plugin_git)
 
-* [预览插件](#plugin_preview)
-
 * [小工具](#plugin_tools)
   * [高亮](#plugin_hightlight)
-	* [vim-highlightedyank](#plugin_hlyank)
-  * [mark相关](#plugin_mark)
-	* [vim-signature](#plugin_mk_signature)
+	 * [vim-highlightedyank](#plugin_hlyank)
+	* [mark相关](#plugin_mark)
+	 * []
 
 * [MarkDown相关](#plugin_markdown)
   * [Markdown预览插件](#plugin_md_privew)
-	* [markdown-preview](#plugin_md_privew_1)
+    * [markdown-preview](#plugin_md_privew_1)
     * [vim-markdown-preview](#plugin_md_privew_2)
     * [preview-markdown.vim](#plugin_md_privew_3)
 * [关于LSP及补全](#lsp_complete)
@@ -401,9 +399,9 @@ let g:gitgutter_enabled = 1
 
 vim-gigutter各种常用命令:
 
- **:GitGutterToggle**  开启关闭gutter
+​ **:GitGutterToggle**  开启关闭gutter
 
- **:GitGutterLineHighlightsToggle**  开启关闭高亮相关行
+​ **:GitGutterLineHighlightsToggle**  开启关闭高亮相关行
 
 ### vim-fugitive
 
@@ -431,7 +429,7 @@ vim-gigutter各种常用命令:
 :Loremipsum 数字 " 生成指定字符数目的文本
 ```
 
-### <span id="plugin_preview">预览插件</span>
+### 预览插件
 
 [vim-livedown](https://github.com/shime/vim-livedown)
 
@@ -456,57 +454,6 @@ Plug 'shime/vim-livedown',{'on':['LivedownPreview','LivedownToggle','LivedownKil
 ```shell
   pip install grip
 ```
-
-### <span id="plugin_tools">小工具</span>
-
-#### <span id="plugin_hightlight">高亮</span>
-
-##### <span id="plugin_hlyank">高亮复制</span> 
-[vim-highlightedyank](https://github.com/machakann/vim-highlightedyank)
-复制操作时，高亮一下刚复制的文本。
-
-安装:
-```vim
-	" vim 8.0+
-	Plug 'machakann/vim-highlightedyank'
-
-	" 如果是vim 8.0以前的版本
-	if !exists('##TextYankPost')
-		map y <Plug>(highlightedyank)
-	endif
-```
-高亮持续时间:
-```vim
-	" 默认是亮了一秒
-	" 单位是毫秒
-	let g:highlightedyank_highlight_duration = 1000
-```
-
-
-还能设置高亮的颜色:
-```vim
-	
-	highlight HighlightedyankRegion cterm=reverse gui=reverse
-```
-高亮颜色设置要放在colortheme设置之后。
-
-
-#### <span id="plugin_mark">mark相关</span>
-##### <span id="plugin_mk_signature">signature</span>
-[vim-signature](https://github.com/kshenoy/vim-signature) 是一个mark显示插件。
-在侧边栏显示mark标记。
-
-![](vim_plugin.assets/2021-04-29 20-03-01 的屏幕截图.png)
-
-常用操作:
-|命令|说明|
-| :---: | --- |
-| mx | 添加mark x是该mark的名称 可以是大小写字母 |
-| dmx | 移除当前行某个mark x是添加时的名称 |
-| m- | 移除当前行所有mark |
-
-
-
 
 ### MarkDown相关
 
@@ -535,8 +482,6 @@ Plug 'shime/vim-livedown',{'on':['LivedownPreview','LivedownToggle','LivedownKil
 ```vim
 Plugin 'puremourning/vimspector'
 ```
-
-
 
 ### <span id="plugin_markdown">Markdown 相关插件</span>
 
