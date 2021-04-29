@@ -18,6 +18,7 @@
 	* [ncm/ncm2](#vp_complete_ncm)
 	* [asyncomplete](#vp_complete_asyncomplete)
 	* [coc](#vp_complete_coc)
+	* [easycomplete](#vp_complete_easycomplete)
 
 ## <span id="about_lsp">关于LSP</span>
 官方定义:
@@ -368,7 +369,7 @@ deoplete 其他“有趣”的补全源插件:
 ### <span id="vp_complete_ncm">ncm/ncm2</span>
 [ncm2](https://github.com/ncm2/ncm2)
 
-国人写的补全框架。
+国人写的补全框架。只支持[vim-lsp](#vp_vim-lsp)和[LanguageClient](#vp_lcn)两个LSC。
 
 keymap映射极度恶心,垃圾！
 
@@ -384,4 +385,27 @@ asyncomplete 这补全框架源可以用自己那堆针对某语言的LSC，也�
 
 
 ### <span id="vp_complete_coc">coc </span>
+
+
+### <span id="vp_complete_easycomplete">easycomplete</span>
+
+[easycomplete](https://github.com/jayli/vim-easycomplete) 是一个纯vimscript补全框架。
+此框架不像deoplete需要依赖python，也不像coc需要依赖nodejs。
+此框架专注于补全，不像coc妄图「出圈」,变成一个插件管理框架,coc的「野心」太大，而且依赖NodeJS,个人非常不喜--正如此框架作者介绍中所说的“对于非前端工程师来说是非必要依赖”。
+
+安装：
+```vim
+	Plug 'jayli/vim-easycomplete'
+```
+
+snip方面，依赖[ultisnips](https://github.com/SirVer/ultisnips)这个snip引擎及[vim-snippets](https://github.com/honza/vim-snippets)这个snip库。
+
+ultisnips外部依赖Python,这有点违反easycomplete这个框架的「极简」精神：“纯 VimL 实现”。
+不过应该也是没办法，很多补全框架对snipmate的支持也不太好，估计是这个snip插件虽然是线vimscript写的，得太「老」了。所以现在snip引擎是ultisnips最为流行。不过easycomplete解决了其他补全框架与ultisnips整合时，常出现的快捷键问题，即tab补全失效(一般补全框架都倾向使用tab去替代Ctrl-n/Ctrl-p这组快捷键，但ultisnips也是默认使用tab进行触发，所以就容易冲突，一般是将ultisnips触发快捷键另设,如设成Ctrl-j,才能解决这个整合小问题)
+
+这框架可以说是开籍即用，几乎零配置。只要你系统装了相应的LSP,如pyls,就能直接使用的了--框架应该是内置了相应的LSC对与系统的LSP「对接」。
+
+此框架内置了路径、文件补全，非常方便。
+此框架应该是补全框架中的一股「清流」。
+
 
